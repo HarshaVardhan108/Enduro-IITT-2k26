@@ -1,0 +1,849 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ENDURO 2026 | Learn - Build - Innovate</title>
+  <meta name="description" content="ENDURO 2026 is a futuristic learning program focused on AI, ML, Full Stack, and Research." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="_tmp_atrw_ppt/ppt/media/image-7-3.svg" />
+
+  <script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            enduro: {
+              dark: '#0A1D37',
+              sky: '#22D3EE',
+              ink: '#020617'
+            }
+          },
+          boxShadow: {
+            sky: '0 0 24px rgba(34,211,238,0.55), 0 0 60px rgba(34,211,238,0.25)',
+            glass: '0 10px 35px rgba(0,0,0,0.35)'
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --enduro-dark: #0a1d37;
+      --enduro-sky: #22d3ee;
+      --enduro-black: #020617;
+    }
+
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 16% 20%, rgba(8, 34, 74, 0.95), rgba(2, 6, 23, 0.98) 42%),
+                  radial-gradient(circle at 88% 8%, rgba(34, 211, 238, 0.28), transparent 38%),
+                  radial-gradient(circle at 78% 78%, rgba(56, 189, 248, 0.24), transparent 40%),
+                  #020617;
+      color: #f1f7ff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .animated-gradient {
+      position: fixed;
+      inset: -40% -20%;
+      background: conic-gradient(
+        from 180deg at 50% 50%,
+        rgba(34, 211, 238, 0.2),
+        rgba(10, 29, 55, 0.3),
+        rgba(125, 211, 252, 0.16),
+        rgba(2, 6, 23, 0.2)
+      );
+      filter: blur(68px);
+      z-index: -2;
+      animation: rotateBg 20s linear infinite;
+      pointer-events: none;
+    }
+
+    .noise-layer {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.6px, transparent 0.6px);
+      background-size: 3px 3px;
+      opacity: 0.11;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .glass {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(125, 211, 252, 0.06));
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section-reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section[id] {
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: rgba(34, 211, 238, 0.95);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .focus-ring:focus-visible {
+      outline: 2px solid rgba(34, 211, 238, 0.95);
+      outline-offset: 2px;
+    }
+
+    .interactive-card {
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(34, 211, 238, 0.55);
+      box-shadow: 0 14px 35px rgba(2, 6, 23, 0.42);
+    }
+
+    .glow-btn {
+      position: relative;
+      overflow: hidden;
+      background: #dc2626 !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(248, 113, 113, 0.8) !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      inset: -120% auto auto -50%;
+      width: 55%;
+      height: 320%;
+      transform: rotate(25deg);
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.55), transparent);
+      transition: transform 0.6s ease;
+    }
+
+    .glow-btn:hover::before {
+      transform: translateX(290%) rotate(25deg);
+    }
+
+    .glow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 24px rgba(248, 113, 113, 0.58), 0 0 60px rgba(248, 113, 113, 0.3);
+    }
+
+    .floating {
+      animation: floatCard 5.5s ease-in-out infinite;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .timeline-linear {
+      position: relative;
+      margin-top: 1.75rem;
+      padding: 0.25rem 0;
+    }
+
+    .timeline-linear::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      width: 0.45rem;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, #3b82f6 0%, #f59e0b 50%, #22d3ee 100%);
+      opacity: 0.95;
+    }
+
+    .timeline-grid {
+      position: relative;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 3.5rem;
+    }
+
+    .timeline-card {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.45);
+      padding: 1rem;
+    }
+
+    .timeline-date {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .timeline-week {
+      margin-top: 0.55rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .timeline-copy {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(241, 245, 249, 0.95);
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      width: 2rem;
+      height: 2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: #020617;
+      border: 2px solid currentColor;
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
+    }
+
+    .marker-w1 { color: #3b82f6; }
+    .marker-w2 { color: #f59e0b; }
+    .marker-w3 { color: #22d3ee; }
+
+    @media (min-width: 768px) {
+      .timeline-linear {
+        margin-top: 2.5rem;
+      }
+
+      .timeline-linear::before {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: auto;
+        width: 100%;
+        height: 1rem;
+        transform: translateY(-50%);
+        background: linear-gradient(to right, #3b82f6 0%, #3b82f6 33%, #f59e0b 33%, #f59e0b 66%, #22d3ee 66%, #22d3ee 100%);
+      }
+
+      .timeline-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .timeline-item {
+        min-height: 26rem;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .timeline-card {
+        max-width: 21rem;
+      }
+
+      .timeline-item.bottom .timeline-card {
+        margin-top: auto;
+      }
+
+      .timeline-marker {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 3.25rem;
+        height: 3.25rem;
+        font-size: 1rem;
+      }
+    }
+
+    .loader-wrap {
+      width: min(92vw, 660px);
+      text-align: center;
+    }
+
+    .loader-title {
+      font-size: clamp(1.8rem, 5vw, 3.1rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #f8fafc;
+    }
+
+    .loader-subtitle {
+      margin-top: 8px;
+      font-size: clamp(1.05rem, 2.4vw, 1.55rem);
+      color: rgba(226, 232, 240, 0.78);
+      letter-spacing: 0.02em;
+    }
+
+    .loader-orbs {
+      margin-top: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+    }
+
+    .loader-orb {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(241, 245, 249, 0.95);
+      animation: orbPulse 1.6s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .loader-orb:nth-child(1) { width: 10px; height: 10px; animation-delay: 0s; opacity: 0.7; }
+    .loader-orb:nth-child(2) { width: 14px; height: 14px; animation-delay: 0.1s; opacity: 0.8; }
+    .loader-orb:nth-child(3) { width: 20px; height: 20px; animation-delay: 0.2s; }
+    .loader-orb:nth-child(4) { width: 28px; height: 28px; animation-delay: 0.3s; }
+    .loader-orb:nth-child(5) { width: 44px; height: 44px; animation-delay: 0.4s; }
+    .loader-orb:nth-child(6) { width: 28px; height: 28px; animation-delay: 0.5s; }
+    .loader-orb:nth-child(7) { width: 20px; height: 20px; animation-delay: 0.6s; }
+    .loader-orb:nth-child(8) { width: 14px; height: 14px; animation-delay: 0.7s; opacity: 0.8; }
+    .loader-orb:nth-child(9) { width: 10px; height: 10px; animation-delay: 0.8s; opacity: 0.7; }
+
+    #loader {
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg) scale(1); }
+      to { transform: rotate(360deg) scale(1.1); }
+    }
+
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-11px); }
+    }
+
+    @keyframes orbPulse {
+      0%, 100% {
+        transform: scale(0.86);
+        opacity: 0.45;
+        filter: blur(0px);
+      }
+      50% {
+        transform: scale(1.12);
+        opacity: 1;
+        filter: blur(0.2px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-gradient"></div>
+  <div class="noise-layer"></div>
+
+  <div id="loader" class="fixed inset-0 z-[100] grid place-items-center bg-[#020617]">
+    <div class="loader-wrap">
+      <!-- <h2 class="loader-title">3D Loading Animation</h2> -->
+      <!-- <p class="loader-subtitle">ENDURO 2026</p> -->
+      <div class="loader-orbs" aria-hidden="true">
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+        <span class="loader-orb"></span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+      <a href="#home" class="focus-ring text-lg font-semibold tracking-[0.25em] text-enduro-sky">ENDURO 2026</a>
+      <div class="hidden items-center gap-7 text-sm font-medium text-slate-100 md:flex">
+        <a href="#video" class="nav-link focus-ring transition hover:text-enduro-sky">Film</a>
+        <a href="#about" class="nav-link focus-ring transition hover:text-enduro-sky">About</a>
+        <a href="#tracks" class="nav-link focus-ring transition hover:text-enduro-sky">Tracks</a>
+        <a href="#timeline" class="nav-link focus-ring transition hover:text-enduro-sky">Timeline</a>
+        <a href="#features" class="nav-link focus-ring transition hover:text-enduro-sky">Features</a>
+        <a href="#highlights" class="nav-link focus-ring transition hover:text-enduro-sky">Highlights</a>
+        <a href="#gallery" class="nav-link focus-ring transition hover:text-enduro-sky">Gallery</a>
+        <a href="#pricing" class="nav-link focus-ring transition hover:text-enduro-sky">Pricing</a>
+      </div>
+      <a href="register.html" class="focus-ring glow-btn rounded-full border border-enduro-sky/60 bg-enduro-sky px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-950 sm:text-sm">Register</a>
+    </div>
+    <div class="mx-auto flex w-full max-w-7xl gap-3 overflow-x-auto px-5 pb-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200 md:hidden sm:px-8">
+      <a href="#video" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Film</a>
+      <a href="#about" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">About</a>
+      <a href="#tracks" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Tracks</a>
+      <a href="#timeline" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Timeline</a>
+      <a href="#pricing" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Pricing</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="section-reveal relative min-h-[92vh] w-full overflow-hidden">
+      <div id="hero-slider" class="absolute inset-0">
+        <img class="hero-slide active" data-hero-slide data-caption="IIT Kharagpur campus aerial perspective" src="https://commons.wikimedia.org/wiki/Special:FilePath/IIT%20Kharagpur%20(2259801380).jpg" alt="Aerial view of IIT Kharagpur campus" />
+        <img class="hero-slide" data-hero-slide data-caption="Wide campus shot of IIT Kharagpur" src="https://commons.wikimedia.org/wiki/Special:FilePath/IIT%20Kharagpur%20Campus%20-%20West%20Midnapore%202015-09-28%204522.JPG" alt="Wide campus view of IIT Kharagpur" />
+        <img class="hero-slide" data-hero-slide data-caption="Iconic IIT Kharagpur main building view" src="https://commons.wikimedia.org/wiki/Special:FilePath/IIT%20Kharagpur%20Main%20Building.JPG" alt="IIT Kharagpur main building view" />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#020617]/90 via-[#020617]/70 to-[#020617]/50"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#020617]/78 via-transparent to-[#020617]/55"></div>
+
+      <div class="relative z-10 mx-auto flex min-h-[92vh] w-full max-w-7xl items-center px-5 py-16 sm:px-8">
+        <div class="max-w-3xl">
+          <p class="mb-5 inline-flex rounded-full border border-enduro-sky/45 bg-enduro-sky/15 px-4 py-1 text-xs font-medium uppercase tracking-[0.2em] text-enduro-sky">IIT Ecosystem Learning Initiative</p>
+          <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-6xl lg:text-7xl">ENDURO 2026</h1>
+          <p class="mt-5 text-xl font-medium text-enduro-sky sm:text-2xl">Learn - Build - Innovate</p>
+          <p class="mt-3 text-sm font-medium text-slate-100 sm:text-base">Python - Machine Learning - Full Stack - AI Research</p>
+          <p class="mt-6 max-w-2xl text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">ENDURO 2026 is a structured, intensive initiative designed to bridge classroom theory with real-world technical excellence through hands-on training, research exposure, and applied projects.</p>
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <a href="register.html" class="focus-ring glow-btn rounded-full border border-enduro-sky/65 bg-enduro-sky px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-slate-950">Register Now</a>
+            <a href="#video" class="focus-ring rounded-full border border-enduro-sky/45 bg-enduro-sky/10 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-enduro-sky/70 hover:bg-enduro-sky/20 hover:text-white">Watch Program Film</a>
+            <a href="#about" class="focus-ring rounded-full border border-slate-200/45 bg-black/20 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-enduro-sky/55 hover:text-enduro-sky">Explore Program</a>
+          </div>
+          <div class="mt-8 grid max-w-2xl grid-cols-3 gap-3 text-xs font-semibold uppercase tracking-[0.1em] text-slate-100 sm:text-sm">
+            <p class="rounded-xl border border-white/15 bg-black/30 px-3 py-2">3 Tracks</p>
+            <p class="rounded-xl border border-white/15 bg-black/30 px-3 py-2">Hands-On Projects</p>
+            <p class="rounded-xl border border-white/15 bg-black/30 px-3 py-2">IIT Ecosystem</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute inset-x-0 bottom-8 z-10">
+        <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-5 sm:px-8">
+          <p id="hero-slide-caption" class="text-sm font-medium text-white/95">IIT Kharagpur campus aerial perspective</p>
+          <div class="flex items-center gap-2">
+            <button type="button" data-hero-dot="0" class="h-2.5 w-2.5 rounded-full bg-enduro-sky transition"></button>
+            <button type="button" data-hero-dot="1" class="h-2.5 w-2.5 rounded-full bg-white/35 transition"></button>
+            <button type="button" data-hero-dot="2" class="h-2.5 w-2.5 rounded-full bg-white/35 transition"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="glass overflow-hidden rounded-3xl border border-enduro-sky/30 p-4 sm:p-6">
+        <div class="grid items-center gap-6 lg:grid-cols-[0.95fr_1.25fr]">
+          <div class="px-2">
+            <p class="text-xs uppercase tracking-[0.2em] text-enduro-sky/90">Program Film</p>
+            <h2 class="section-heading mt-3 text-3xl font-semibold text-white sm:text-4xl">See ENDURO Before You Register</h2>
+            <p class="mt-4 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">A quick visual walkthrough of workshops, mentorship, and project outcomes. Watch this first, then continue to registration.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="register.html" class="focus-ring glow-btn rounded-full border border-enduro-sky/65 bg-enduro-sky px-6 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-slate-950">Apply Now</a>
+              <a href="#tracks" class="focus-ring rounded-full border border-white/30 bg-white/5 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-slate-100 transition hover:border-enduro-sky/55 hover:text-enduro-sky">View Tracks</a>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-white/15 bg-black/35 p-2">
+            <div class="aspect-video w-full overflow-hidden rounded-xl">
+              <iframe
+                class="h-full w-full"
+                src="https://drive.google.com/file/d/11IErie1q1DlOi-vHQCpLOzNhsD5egkq2/preview"
+                allow="autoplay"
+                allowfullscreen
+                loading="lazy"
+                title="ENDURO 2026 Intro Video">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="mb-8">
+        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Program Overview</h2>
+        <p class="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">The program is built around a Skill + Research + Application model to prepare participants for both industry and research pathways across the AI and technology ecosystem.</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 0.1s;">
+          <p class="text-3xl">HT</p>
+          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Hands-On Training</h3>
+          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Build skills through guided, project-based exercises from fundamentals to application.</p>
+        </article>
+        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 0.4s;">
+          <p class="text-3xl">RE</p>
+          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Research Exposure</h3>
+          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Engage with cutting-edge academic and applied research in modern technical domains.</p>
+        </article>
+        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 0.7s;">
+          <p class="text-3xl">RP</p>
+          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Real-World Projects</h3>
+          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Develop portfolio-ready solutions aimed at genuine technical and social problems.</p>
+        </article>
+        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 1s;">
+          <p class="text-3xl">IL</p>
+          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Interdisciplinary Learning</h3>
+          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Connect technology, science, and human insight for broader real-world impact.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tracks" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="mb-8">
+        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Three Specialized Learning Tracks</h2>
+        <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">Participants select one track aligned with their goals, whether entering industry or pursuing research.</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="group glass interactive-card rounded-2xl p-6 transition duration-300 hover:-translate-y-2 hover:border-enduro-sky/55 hover:bg-enduro-dark/35">
+          <h3 class="text-xl font-semibold text-enduro-sky">Algorithms for Text & Data Analytics</h3>
+          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Week 1 focuses on algorithm design using Python. Week 2 introduces NLP and machine learning foundations.</p>
+          <p class="mt-3 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Outcome: AI/ML base + text analytics + problem solving</p>
+        </article>
+        <article class="group glass interactive-card rounded-2xl p-6 transition duration-300 hover:-translate-y-2 hover:border-enduro-sky/55 hover:bg-enduro-dark/35">
+          <h3 class="text-xl font-semibold text-enduro-sky">Solution Tech Workshop (STW)</h3>
+          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Build production-ready web applications using Python (Django/Flask) with ReactJS/NodeJS for real-world problem statements.</p>
+          <p class="mt-3 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Certified by Transenigma Pvt Ltd and Prof. Pawan Goyal (CSE, IIT KGP)</p>
+          <p class="mt-2 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Track Fee: Rs 2,000 + 18% GST</p>
+        </article>
+        <article class="group glass interactive-card rounded-2xl p-6 transition duration-300 hover:-translate-y-2 hover:border-enduro-sky/55 hover:bg-enduro-dark/35">
+          <h3 class="text-xl font-semibold text-enduro-sky">Science & Translational Research</h3>
+          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">For research-oriented students exploring AI and human understanding through deep learning, social computing, and computational psychology.</p>
+          <p class="mt-3 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Research themes: mind, behavior, consciousness, and applied AI</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="mb-8">
+        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Program Timeline</h2>
+        <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">A structured 3-week journey from June 1 to June 23, 2026.</p>
+      </div>
+      <div class="timeline-linear">
+        <div class="timeline-grid">
+          <article class="timeline-item top">
+            <div class="timeline-card glass">
+              <p class="timeline-date text-[#3b82f6]">June 1 - June 8</p>
+              <h3 class="timeline-week text-[#3b82f6]">Week-1</h3>
+              <p class="timeline-copy">Program kickoff and launch of the structured 3-week learning journey.</p>
+            </div>
+            <span class="timeline-marker marker-w1">01</span>
+          </article>
+
+          <article class="timeline-item bottom">
+            <div class="timeline-card glass">
+              <p class="timeline-date text-[#f59e0b]">June 9 - June 15</p>
+              <h3 class="timeline-week text-[#f59e0b]">Week-2</h3>
+              <p class="timeline-copy">National Youth Symposium</p>
+            </div>
+            <span class="timeline-marker marker-w2">02</span>
+          </article>
+
+          <article class="timeline-item top">
+            <div class="timeline-card glass">
+              <p class="timeline-date text-[#22d3ee]">June 16 - June 23</p>
+              <h3 class="timeline-week text-[#22d3ee]">Week-3</h3>
+              <p class="timeline-copy">Program conclusion with final presentations and certification.</p>
+            </div>
+            <span class="timeline-marker marker-w3">03</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="mb-8">
+        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Why Participate in ENDURO 2026?</h2>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
+          <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=900&q=80" alt="Hands-on coding training" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
+          <h3 class="text-xl font-semibold text-enduro-sky">Hands-on Training</h3>
+          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Build real systems and projects instead of staying only at theoretical understanding.</p>
+        </article>
+        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Mentorship session with experts" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
+          <h3 class="text-xl font-semibold text-enduro-sky">Expert Mentorship</h3>
+          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Learn directly from IIT faculty and experienced industry leaders.</p>
+        </article>
+        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80" alt="Real-world project collaboration" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
+          <h3 class="text-xl font-semibold text-enduro-sky">Portfolio Projects</h3>
+          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Leave with tangible work products useful for employers, internships, and higher studies.</p>
+        </article>
+        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
+          <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80" alt="Future AI and tech career growth" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
+          <h3 class="text-xl font-semibold text-enduro-sky">Career in AI & Tech</h3>
+          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Gain the practical and research-oriented skills that matter for future technology careers.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="highlights" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="mb-8">
+        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Program Highlights</h2>
+        <p class="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">Selection-based admission with limited seats, ecosystem exposure near IIT Kharagpur, and recognized certification pathways.</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="glass interactive-card overflow-hidden rounded-2xl">
+          <h3 class="px-5 pt-5 text-lg font-semibold text-enduro-sky">National Youth Symposium</h3>
+          <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1000&q=80" alt="Youth symposium session" class="mt-4 h-44 w-full object-cover" />
+          <p class="px-5 pb-5 pt-4 text-[0.95rem] leading-7 text-slate-100/95">Two guided symposium sessions are planned on June 8 and June 15, 2026 near IIT Kharagpur.</p>
+        </article>
+        <article class="glass interactive-card overflow-hidden rounded-2xl">
+          <h3 class="px-5 pt-5 text-lg font-semibold text-enduro-sky">Selection-Based Admission</h3>
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80" alt="Selection and screening process" class="mt-4 h-44 w-full object-cover" />
+          <p class="px-5 pb-5 pt-4 text-[0.95rem] leading-7 text-slate-100/95">Registrations open with limited seats. Selection ensures focused learning and mentoring quality.</p>
+        </article>
+        <article class="glass interactive-card overflow-hidden rounded-2xl">
+          <h3 class="px-5 pt-5 text-lg font-semibold text-enduro-sky">Certification Pathways</h3>
+          <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1000&q=80" alt="Certification and achievement" class="mt-4 h-44 w-full object-cover" />
+          <p class="px-5 pb-5 pt-4 text-[0.95rem] leading-7 text-slate-100/95">Track-led certifications including STW recognition from Transenigma and Prof. Pawan Goyal (IIT KGP).</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="mb-8">
+        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Gallery</h2>
+        <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">Click any image to view it in full size.</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="AI Workshop Arena">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80" alt="AI workshop arena" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
+          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">AI Workshop Arena</span>
+        </button>
+        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Full Stack Coding Sprint">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" alt="Full stack coding sprint" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
+          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Full Stack Coding Sprint</span>
+        </button>
+        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Research and Experiments Lab">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1000&q=80" alt="Research and experiments lab" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
+          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Research and Experiments Lab</span>
+        </button>
+        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Innovation Showcase">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80" alt="Innovation showcase stage" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
+          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Innovation Showcase</span>
+        </button>
+        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Mentorship Session">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=80" alt="Mentorship session" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
+          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Mentorship Session</span>
+        </button>
+        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Team Collaboration">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Team collaboration" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
+          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Team Collaboration</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="pricing" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+      <div class="glass relative overflow-hidden rounded-3xl p-8 sm:p-10">
+        <div class="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-enduro-sky/20 blur-2xl"></div>
+        <p class="text-xs uppercase tracking-[0.24em] text-enduro-sky/90">Cost, Support and Payment Plan</p>
+        <h2 class="mt-3 text-4xl font-bold text-white">Rs 17,000 Total Estimated Cost</h2>
+        <p class="mt-3 max-w-2xl text-[0.95rem] leading-7 text-slate-100/95">All-inclusive coverage for travel, accommodation, food, and program registration. Alumni Support Initiative covers Rs 9,000 to reduce participant burden.</p>
+        <div class="mt-6 grid gap-3 text-[0.95rem] leading-7 text-slate-100/95 sm:grid-cols-2">
+          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Travel: To and from IIT Kharagpur ecosystem</p>
+          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Accommodation: Safe and comfortable stay</p>
+          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Food: Meals covered for program duration</p>
+          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Registration: Workshops, symposiums, certification</p>
+        </div>
+        <div class="mt-6">
+          <p class="text-xs uppercase tracking-[0.16em] text-enduro-sky/90">Installment Milestones (2026)</p>
+          <div class="mt-3 grid gap-3 text-[0.95rem] leading-7 text-slate-100/95 sm:grid-cols-2 lg:grid-cols-4">
+            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">April 18</span><br />Installment 1 due</p>
+            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">May 1</span><br />Installment 2 due</p>
+            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">May 15</span><br />Installment 3 due</p>
+            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">May 30</span><br />Final settlement deadline</p>
+          </div>
+        </div>
+        <a href="register.html" class="glow-btn mt-7 inline-flex rounded-full border border-enduro-sky/65 bg-enduro-sky px-7 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-950">Apply for Selection</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="lightbox-modal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Image preview">
+    <div class="relative w-full max-w-5xl">
+      <button id="lightbox-close" type="button" class="absolute -top-12 right-0 rounded-full border border-white/30 bg-black/60 px-4 py-2 text-sm font-semibold text-white transition hover:border-enduro-sky hover:text-enduro-sky">Close</button>
+      <img id="lightbox-image" src="" alt="" class="max-h-[78vh] w-full rounded-2xl border border-white/20 object-contain" />
+      <p id="lightbox-caption" class="mt-3 text-center text-[0.95rem] leading-7 text-slate-100/95"></p>
+    </div>
+  </div>
+
+  <footer class="border-t border-white/10 bg-black/35">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-center text-sm text-slate-300 sm:flex-row sm:px-8 sm:text-left">
+      <p>© 2026 ENDURO. All rights reserved.</p>
+      <p>Advanced Technical and Research Workshops</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => loader.classList.add('hidden'), 450);
+    });
+
+    const revealElements = document.querySelectorAll('.section-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealElements.forEach((el) => observer.observe(el));
+
+    const heroSlides = document.querySelectorAll('[data-hero-slide]');
+    const heroDots = document.querySelectorAll('[data-hero-dot]');
+    const heroSlideCaption = document.getElementById('hero-slide-caption');
+    const heroSlider = document.getElementById('hero-slider');
+    let heroSlideIndex = 0;
+    let heroSlideTimer = null;
+
+    const showHeroSlide = (index) => {
+      if (!heroSlides.length) return;
+      heroSlideIndex = (index + heroSlides.length) % heroSlides.length;
+      heroSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === heroSlideIndex);
+      });
+      heroDots.forEach((dot, i) => {
+        dot.classList.toggle('bg-enduro-sky', i === heroSlideIndex);
+        dot.classList.toggle('bg-white/35', i !== heroSlideIndex);
+      });
+      if (heroSlideCaption) {
+        heroSlideCaption.textContent = heroSlides[heroSlideIndex].getAttribute('data-caption') || '';
+      }
+    };
+
+    const startHeroSlider = () => {
+      if (heroSlides.length < 2) return;
+      if (heroSlideTimer) clearInterval(heroSlideTimer);
+      heroSlideTimer = setInterval(() => {
+        showHeroSlide(heroSlideIndex + 1);
+      }, 4200);
+    };
+
+    const stopHeroSlider = () => {
+      if (heroSlideTimer) {
+        clearInterval(heroSlideTimer);
+        heroSlideTimer = null;
+      }
+    };
+
+    heroDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showHeroSlide(index);
+        startHeroSlider();
+      });
+    });
+
+    if (heroSlider) {
+      heroSlider.addEventListener('mouseenter', stopHeroSlider);
+      heroSlider.addEventListener('mouseleave', startHeroSlider);
+      heroSlider.addEventListener('touchstart', stopHeroSlider, { passive: true });
+      heroSlider.addEventListener('touchend', startHeroSlider, { passive: true });
+    }
+
+    showHeroSlide(0);
+    startHeroSlider();
+
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxButtons = document.querySelectorAll('[data-lightbox-src]');
+
+    const closeLightbox = () => {
+      lightboxModal.classList.add('hidden');
+      lightboxModal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+      lightboxImage.src = '';
+      lightboxImage.alt = '';
+      lightboxCaption.textContent = '';
+    };
+
+    lightboxButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const src = button.getAttribute('data-lightbox-src') || '';
+        const title = button.getAttribute('data-lightbox-title') || '';
+        lightboxImage.src = src;
+        lightboxImage.alt = title;
+        lightboxCaption.textContent = title;
+        lightboxModal.classList.remove('hidden');
+        lightboxModal.classList.add('flex');
+        document.body.classList.add('overflow-hidden');
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightboxModal.addEventListener('click', (event) => {
+      if (event.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
+
+
