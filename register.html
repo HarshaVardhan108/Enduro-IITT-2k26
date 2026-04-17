@@ -1,458 +1,312 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ENDURO 2026 | Registration</title>
-  <meta name="description" content="Register for ENDURO 2026." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="_tmp_atrw_ppt/ppt/media/image-7-3.svg" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENDURO 2026 | Register for Selection</title>
+  <link rel="icon" type="image/svg+xml" href="images/icons8-internship-96.svg" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="images/icons8-internship-64.svg" sizes="64x64">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <script>
-    window.tailwind = window.tailwind || {};
-    window.tailwind.config = {
+    tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          },
           colors: {
-            enduro: {
-              dark: '#0A1D37',
-              sky: '#22D3EE',
-              ink: '#020617'
-            }
+            dark: '#021a13',
+            accent: '#d4ff00',
+            secondary: '#00ffcc',
+            glass: 'rgba(2, 26, 19, 0.6)',
+            glassBorder: 'rgba(0, 255, 204, 0.15)',
           },
           boxShadow: {
-            sky: '0 0 24px rgba(34,211,238,0.55), 0 0 60px rgba(34,211,238,0.25)'
+            'glow-accent': '0 0 20px rgba(212, 255, 0, 0.4)',
+            'glow-secondary': '0 0 20px rgba(0, 255, 204, 0.4)',
           }
         }
       }
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    * {
-      font-family: 'Poppins', sans-serif;
     }
-
+  </script>
+  <style>
     body {
-      background: radial-gradient(circle at 12% 15%, rgba(8, 34, 74, 0.96), rgba(2, 6, 23, 0.98) 45%),
-                  radial-gradient(circle at 92% 0%, rgba(34, 211, 238, 0.28), transparent 38%),
-                  radial-gradient(circle at 75% 70%, rgba(56, 189, 248, 0.18), transparent 42%),
-                  #020617;
-      color: #f1f7ff;
-      min-height: 100vh;
+      background-color: #021a13;
+      color: #e2e8f0;
       overflow-x: hidden;
     }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #021a13; }
+    ::-webkit-scrollbar-thumb { background: #00ffcc; border-radius: 4px; }
 
-    .animated-gradient {
+    /* Custom Cursor */
+    .cursor-glow {
       position: fixed;
-      inset: -35% -20%;
-      background: conic-gradient(
-        from 0deg at 50% 50%,
-        rgba(34, 211, 238, 0.2),
-        rgba(10, 29, 55, 0.28),
-        rgba(125, 211, 252, 0.16),
-        rgba(2, 6, 23, 0.2)
-      );
-      filter: blur(74px);
-      animation: rotateBg 19s linear infinite;
-      z-index: -2;
+      top: 0; left: 0;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,255,204,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
       pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease-out;
     }
 
-    .noise-layer {
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.6px, transparent 0.6px);
-      background-size: 3px 3px;
-      opacity: 0.11;
-      z-index: -1;
-      pointer-events: none;
+    /* Glassmorphism */
+    .glass-panel {
+      background: rgba(2, 26, 19, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 255, 204, 0.2);
     }
 
-    .glass {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(125, 211, 252, 0.06));
-      border: 1px solid rgba(125, 211, 252, 0.3);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-
-    .field {
-      background: rgba(8, 18, 38, 0.75);
-      border: 1px solid rgba(125, 211, 252, 0.3);
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .field:focus {
-      outline: none;
-      border-color: rgba(34, 211, 238, 0.9);
-      box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.2);
-    }
-
-    .section-reveal {
+    /* Animations */
+    .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
     }
-
-    .section-reveal.show {
+    .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
 
-    section[id] {
-      scroll-margin-top: 90px;
+    .tilt-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
     }
 
-    .glow-btn {
-      background: #dc2626 !important;
-      color: #ffffff !important;
-      border: 1px solid rgba(248, 113, 113, 0.8) !important;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    .text-gradient {
+      background: linear-gradient(to right, #d4ff00, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .glow-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 24px rgba(248, 113, 113, 0.58), 0 0 60px rgba(248, 113, 113, 0.3);
+    /* Grid Background */
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(0, 255, 204, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 204, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     }
 
-    .glow-btn:disabled {
-      cursor: not-allowed;
-      opacity: 0.55;
-      transform: none;
-      box-shadow: none;
+    /* Floating Labels */
+    .input-field {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0,255,204,0.3);
+      color: white;
     }
-
-    .loader-wrap {
-      width: min(92vw, 660px);
-      text-align: center;
-    }
-
-    .loader-title {
-      font-size: clamp(1.8rem, 5vw, 3.1rem);
-      font-weight: 700;
-      line-height: 1.1;
-      color: #f8fafc;
-    }
-
-    .loader-subtitle {
-      margin-top: 8px;
-      font-size: clamp(1.05rem, 2.4vw, 1.55rem);
-      color: rgba(226, 232, 240, 0.78);
-      letter-spacing: 0.02em;
-    }
-
-    .loader-orbs {
-      margin-top: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
-    }
-
-    .loader-orb {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      background: rgba(241, 245, 249, 0.95);
-      animation: orbPulse 1.6s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    .loader-orb:nth-child(1) { width: 10px; height: 10px; animation-delay: 0s; opacity: 0.7; }
-    .loader-orb:nth-child(2) { width: 14px; height: 14px; animation-delay: 0.1s; opacity: 0.8; }
-    .loader-orb:nth-child(3) { width: 20px; height: 20px; animation-delay: 0.2s; }
-    .loader-orb:nth-child(4) { width: 28px; height: 28px; animation-delay: 0.3s; }
-    .loader-orb:nth-child(5) { width: 44px; height: 44px; animation-delay: 0.4s; }
-    .loader-orb:nth-child(6) { width: 28px; height: 28px; animation-delay: 0.5s; }
-    .loader-orb:nth-child(7) { width: 20px; height: 20px; animation-delay: 0.6s; }
-    .loader-orb:nth-child(8) { width: 14px; height: 14px; animation-delay: 0.7s; opacity: 0.8; }
-    .loader-orb:nth-child(9) { width: 10px; height: 10px; animation-delay: 0.8s; opacity: 0.7; }
-
-    #loader {
-      transition: opacity 0.45s ease, visibility 0.45s ease;
-    }
-
-    #loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    @keyframes rotateBg {
-      from { transform: rotate(0deg) scale(1); }
-      to { transform: rotate(360deg) scale(1.1); }
-    }
-
-    @keyframes orbPulse {
-      0%, 100% {
-        transform: scale(0.86);
-        opacity: 0.45;
-        filter: blur(0px);
-      }
-      50% {
-        transform: scale(1.12);
-        opacity: 1;
-        filter: blur(0.2px);
-      }
+    .input-field:focus {
+      outline: none;
+      border-color: #d4ff00;
+      box-shadow: 0 0 10px rgba(212,255,0,0.2);
     }
   </style>
 </head>
 <body>
-  <div class="animated-gradient"></div>
-  <div class="noise-layer"></div>
+  <!-- Custom Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-  <div id="loader" class="fixed inset-0 z-[100] grid place-items-center bg-[#020617]">
-    <div class="loader-wrap">
-      <!-- <h2 class="loader-title">3D Loading Animation</h2> -->
-      <!-- <p class="loader-subtitle">Admissions Portal</p> -->
-      <div class="loader-orbs" aria-hidden="true">
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-      </div>
-    </div>
-  </div>
-
-  <nav class="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-      <a href="index.html" class="text-lg font-semibold tracking-[0.24em] text-enduro-sky">ENDURO 2026</a>
-      <a href="#form-section" class="glow-btn rounded-full border border-enduro-sky/60 bg-enduro-sky px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-950 sm:text-sm">Apply Now</a>
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass-panel border-b-0 border-t-0">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="font-bold text-2xl tracking-tighter text-white">ENDURO<span class="text-accent">.</span></div>
+      <a href="index.html" class="bg-accent text-dark font-semibold px-6 py-2 rounded-full hover:shadow-glow-accent transition-all duration-300">
+        Back Home
+      </a>
     </div>
   </nav>
 
-  <main class="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 lg:py-16">
-    <section class="section-reveal mb-10 text-center">
-      <p class="inline-flex rounded-full border border-enduro-sky/55 bg-enduro-sky/20 px-4 py-1 text-xs uppercase tracking-[0.2em] text-enduro-sky">Registration Portal</p>
-      <h1 class="mt-4 text-4xl font-extrabold text-white sm:text-5xl">Join ENDURO 2026</h1>
-      <p class="mx-auto mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">Selection-based admission with limited seats. Submit your details and preferred track to begin the evaluation process.</p>
-    </section>
+  <!-- 1. Hero Section -->
+  <section class="relative py-24 flex items-center justify-center overflow-hidden">
+    <div class="bg-grid-pattern"></div>
+    
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center pt-20">
+      <div class="inline-block px-4 py-1.5 rounded-full border border-secondary/50 text-secondary bg-secondary/10 font-mono text-sm mb-4 reveal">
+        > ENDURO 2026 Registration
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-4 reveal">
+        Secure Your <span class="text-gradient">Spot</span>
+      </h1>
+      <p class="text-lg text-gray-400 font-mono reveal max-w-2xl mx-auto">Select your track and complete the registration form to join our elite cohort this summer</p>
+    </div>
+  </section>
 
-    <section id="form-section" class="section-reveal">
-      <article class="glass mx-auto w-full max-w-3xl rounded-3xl p-6 sm:p-8">
-        <h2 class="text-center text-2xl font-semibold text-white">Registration Form</h2>
-        <p class="mt-2 text-center text-[0.95rem] text-slate-100/95">All fields are required.</p>
+  <!-- Choose Your Domain Section -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl lg:text-5xl font-bold mb-4">Choose Your <span class="text-accent">Domain</span></h2>
+        <p class="text-gray-400 max-w-2xl mx-auto font-mono">Master the technologies that are shaping the future.</p>
+      </div>
 
-        <form id="registration-form" class="mt-7 space-y-5" novalidate>
-          <div>
-            <label for="name" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Name</label>
-            <input id="name" name="name" type="text" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 placeholder-slate-300/40" placeholder="Enter your full name" />
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Track 1 -->
+        <div class="tilt-card glass-panel p-8 rounded-2xl hover:border-accent hover:shadow-glow-accent cursor-pointer reveal">
+          <div class="w-14 h-14 rounded-lg bg-accent/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
           </div>
+          <h3 class="text-2xl font-bold text-white mb-3">AI & Machine Learning</h3>
+          <p class="text-gray-400 text-sm mb-6">Build neural networks, work with LLMs, and dive deep into data science algorithms.</p>
+          <ul class="space-y-2 text-sm font-mono text-secondary">
+            <li>> Python / PyTorch</li>
+            <li>> NLP & Vision</li>
+            <li>> Model Deployment</li>
+          </ul>
+        </div>
 
-          <div>
-            <label for="email" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Email</label>
-            <input id="email" name="email" type="email" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 placeholder-slate-300/40" placeholder="Enter your email" />
+        <!-- Track 2 -->
+        <div class="tilt-card glass-panel p-8 rounded-2xl hover:border-secondary hover:shadow-glow-secondary cursor-pointer reveal" style="transition-delay: 0.1s">
+          <div class="w-14 h-14 rounded-lg bg-secondary/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
           </div>
+          <h3 class="text-2xl font-bold text-white mb-3">Full Stack Dev</h3>
+          <p class="text-gray-400 text-sm mb-6">Master the modern web stack. From responsive frontends to scalable microservices.</p>
+          <ul class="space-y-2 text-sm font-mono text-accent">
+            <li>> React / Next.js</li>
+            <li>> Node.js / Express</li>
+            <li>> Database Design</li>
+          </ul>
+        </div>
 
-          <div>
-            <label for="phone" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Phone</label>
-            <input id="phone" name="phone" type="tel" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 placeholder-slate-300/40" placeholder="Enter your phone number" />
+        <!-- Track 3 -->
+        <div class="tilt-card glass-panel p-8 rounded-2xl hover:border-accent hover:shadow-glow-accent cursor-pointer reveal" style="transition-delay: 0.2s">
+          <div class="w-14 h-14 rounded-lg bg-accent/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
           </div>
+          <h3 class="text-2xl font-bold text-white mb-3">Research & Innovation</h3>
+          <p class="text-gray-400 text-sm mb-6">Push the boundaries of technology. Publish papers and invent new solutions.</p>
+          <ul class="space-y-2 text-sm font-mono text-secondary">
+            <li>> Literature Review</li>
+            <li>> Prototyping</li>
+            <li>> Patent Drafting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div>
-            <label for="college" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">College</label>
-            <input id="college" name="college" type="text" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 placeholder-slate-300/40" placeholder="Enter your college name" />
-          </div>
+  <!-- 8. Registration Form -->
+  <section id="register" class="py-24 relative">
+    <div class="max-w-3xl mx-auto px-6 reveal">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl font-bold mb-4">Join Our <span class="text-secondary">Program</span></h2>
+        <p class="font-mono text-gray-400">> Complete the form below to apply</p>
+      </div>
 
-          <div>
-            <label for="branch" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Branch</label>
-            <input id="branch" name="branch" type="text" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 placeholder-slate-300/40" placeholder="Enter your branch" />
-          </div>
+      <!-- Google Form Embed -->
+      <div class="mt-12">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfExample/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" class="rounded-2xl border border-secondary/20">Loading...</iframe>
+      </div>
+    </div>
+  </section>
 
-          <div>
-            <label for="rollNo" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Roll No</label>
-            <input id="rollNo" name="rollNo" type="text" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 placeholder-slate-300/40" placeholder="Enter your roll number" />
-          </div>
-
-          <div>
-            <label for="amountPaid" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Amount Paid (INR)</label>
-            <input id="amountPaid" name="amountPaid" type="number" min="0" step="0.01" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 placeholder-slate-300/40" placeholder="Enter amount paid" />
-          </div>
-
-          <div class="rounded-2xl border border-enduro-sky/30 bg-black/25 p-4 text-center">
-            <p class="text-xs font-medium uppercase tracking-[0.14em] text-enduro-sky">Payment QR Code</p>
-            <img id="payment-qr-image" alt="Payment QR code" class="mx-auto mt-3 h-56 w-56 rounded-xl border border-white/15 object-cover" />
-            <p id="payment-qr-note" class="mt-3 text-xs text-slate-300">Scan this QR code and complete payment before submitting the form.</p>
-          </div>
-
-          <div>
-            <label for="track" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Preferred Track</label>
-            <select id="track" name="track" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50">
-              <option value="" class="bg-[#0d1513]">Select a track</option>
-              <option value="Algorithms for Text & Data Analytics" class="bg-[#0d1513]">Algorithms for Text & Data Analytics</option>
-              <option value="Solution Tech Workshop (STW)" class="bg-[#0d1513]">Solution Tech Workshop (STW)</option>
-              <option value="Science & Translational Research" class="bg-[#0d1513]">Science & Translational Research</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="paymentScreenshot" class="mb-2 block text-xs font-medium uppercase tracking-[0.1em] text-slate-50">Screenshot of Payment</label>
-            <input id="paymentScreenshot" name="paymentScreenshot" type="file" accept="image/*" required class="field w-full rounded-xl px-4 py-3 text-sm text-slate-50 file:mr-4 file:rounded-lg file:border-0 file:bg-enduro-sky/20 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-enduro-sky" />
-          </div>
-
-          <label for="consent" class="flex items-start gap-3 rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-slate-100">
-            <input id="consent" name="consent" type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-white/40 bg-transparent accent-cyan-400" />
-            <span>I am fully aware of the program.</span>
-          </label>
-
-          <button id="submit-btn" type="submit" disabled class="glow-btn w-full rounded-xl border border-enduro-sky/70 bg-enduro-sky px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-950">Submit Registration</button>
-          <p id="status-message" class="min-h-[1.25rem] text-sm text-slate-100"></p>
-        </form>
-      </article>
-    </section>
-  </main>
-
-  <footer class="border-t border-white/10 bg-black/35">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-center text-sm text-slate-300 sm:flex-row sm:px-8 sm:text-left">
-      <p>© 2026 ENDURO. All rights reserved.</p>
-      <p>Admissions and Selection Portal</p>
+  <!-- 10. Footer -->
+  <footer class="border-t border-white/10 py-12 text-center text-gray-500 bg-black/40 text-sm font-mono">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>System.out.println("� 2026 ENDURO");</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-accent transition-colors">T&C</a>
+        <a href="#" class="hover:text-accent transition-colors">Privacy</a>
+        <a href="#" class="hover:text-secondary transition-colors">Support</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    const APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
-    const PAYMENT_QR_IMAGE = 'YOUR_PAYMENT_QR_IMAGE_URL_OR_PATH';
-
-    const form = document.getElementById('registration-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const statusMessage = document.getElementById('status-message');
-    const consentCheckbox = document.getElementById('consent');
-    const paymentQrImage = document.getElementById('payment-qr-image');
-    const paymentQrNote = document.getElementById('payment-qr-note');
-
-    const setStatus = (message, isError = false) => {
-      statusMessage.textContent = message;
-      statusMessage.className = `min-h-[1.25rem] text-sm ${isError ? 'text-rose-300' : 'text-sky-300'}`;
-    };
-
-    if (paymentQrImage && paymentQrNote) {
-      if (PAYMENT_QR_IMAGE && PAYMENT_QR_IMAGE !== 'YOUR_PAYMENT_QR_IMAGE_URL_OR_PATH') {
-        paymentQrImage.src = PAYMENT_QR_IMAGE;
-      } else {
-        paymentQrImage.classList.add('hidden');
-        paymentQrNote.textContent = 'Set PAYMENT_QR_IMAGE in script to display your payment QR photo.';
-      }
-    }
-
-    const readFileAsDataUrl = (file) => new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = () => reject(new Error('Failed to read uploaded file.'));
-      reader.readAsDataURL(file);
+    // Custom Cursor
+    const cursor = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
 
-    const updateSubmitState = () => {
-      submitBtn.disabled = !consentCheckbox.checked;
+    // Intersection Observer for Reveal Animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
     };
 
-    consentCheckbox.addEventListener('change', updateSubmitState);
-    updateSubmitState();
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      if (!form.checkValidity()) {
-        setStatus('Please fill all required fields correctly.', true);
-        form.reportValidity();
-        return;
-      }
-
-      if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
-        setStatus('Please set APPS_SCRIPT_URL before submitting.', true);
-        return;
-      }
-
-      if (!consentCheckbox.checked) {
-        setStatus('Please confirm consent to submit the form.', true);
-        return;
-      }
-
-      const formData = new FormData(form);
-
-      const paymentScreenshotFile = formData.get('paymentScreenshot');
-
-      if (!(paymentScreenshotFile instanceof File)) {
-        setStatus('Please upload payment screenshot.', true);
-        return;
-      }
-
-      let paymentScreenshotData;
-
-      try {
-        paymentScreenshotData = await readFileAsDataUrl(paymentScreenshotFile);
-      } catch (error) {
-        setStatus(error.message || 'Unable to process uploaded files.', true);
-        return;
-      }
-
-      const submission = {
-        name: formData.get('name')?.toString().trim(),
-        email: formData.get('email')?.toString().trim(),
-        phone: formData.get('phone')?.toString().trim(),
-        college: formData.get('college')?.toString().trim(),
-        branch: formData.get('branch')?.toString().trim(),
-        rollNo: formData.get('rollNo')?.toString().trim(),
-        amountPaid: formData.get('amountPaid')?.toString().trim(),
-        track: formData.get('track')?.toString().trim(),
-        paymentScreenshotName: paymentScreenshotFile.name,
-        paymentScreenshotData,
-        consent: consentCheckbox.checked,
-        submittedAt: new Date().toISOString()
-      };
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-      setStatus('Submitting registration...');
-
-      try {
-        const response = await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(submission)
-        });
-
-        if (!response.ok) {
-          throw new Error('Submission failed. Check Apps Script deployment and permissions.');
-        }
-
-        setStatus('Registration submitted successfully.');
-        form.reset();
-      } catch (error) {
-        setStatus(error.message || 'Unable to submit registration.', true);
-      } finally {
-        updateSubmitState();
-        submitBtn.textContent = 'Submit Registration';
-      }
-    });
-
-    const revealElements = document.querySelectorAll('.section-reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+          entry.target.classList.add('active');
+          // Start counter if it's a counter element
+          if (entry.target.querySelector('.counter')) {
+            startCounters(entry.target);
+          }
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, observerOptions);
 
-    revealElements.forEach((el) => observer.observe(el));
-
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      setTimeout(() => loader.classList.add('hidden'), 450);
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
     });
+
+    // Sub-function for Counters
+    function startCounters(container) {
+      const counters = container.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.innerText = Math.ceil(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCounter();
+      });
+    }
+
+    // 3D Tilt Effect
+    const cards = document.querySelectorAll('.tilt-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+      });
+    });
+
+
   </script>
 </body>
 </html>
-

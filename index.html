@@ -1,181 +1,176 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENDURO 2026 | Learn - Build - Innovate</title>
-  <meta name="description" content="ENDURO 2026 is a futuristic learning program focused on AI, ML, Full Stack, and Research." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="images/image-7-3.svg" />
-
+  <link rel="icon" type="image/svg+xml" href="images/icons8-internship-96.svg" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="images/icons8-internship-64.svg" sizes="64x64">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
-    window.tailwind = window.tailwind || {};
-    window.tailwind.config = {
+    tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
           colors: {
-            enduro: {
-              dark: '#0A1D37',
-              sky: '#22D3EE',
-              ink: '#020617'
-            }
+            dark: '#021a13',
+            accent: '#d4ff00',
+            secondary: '#00ffcc',
+            glass: 'rgba(2, 26, 19, 0.6)',
+            glassBorder: 'rgba(0, 255, 204, 0.15)',
           },
           boxShadow: {
-            sky: '0 0 24px rgba(34,211,238,0.55), 0 0 60px rgba(34,211,238,0.25)',
-            glass: '0 10px 35px rgba(0,0,0,0.35)'
+            'glow-accent': '0 0 20px rgba(212, 255, 0, 0.4)',
+            'glow-secondary': '0 0 20px rgba(0, 255, 204, 0.4)',
           }
         }
       }
     };
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
-    :root {
-      --enduro-dark: #0a1d37;
-      --enduro-sky: #22d3ee;
-      --enduro-black: #020617;
-    }
-
-    * {
-      font-family: 'Poppins', sans-serif;
-    }
-
     body {
-      background: radial-gradient(circle at 16% 20%, rgba(8, 34, 74, 0.95), rgba(2, 6, 23, 0.98) 42%),
-                  radial-gradient(circle at 88% 8%, rgba(34, 211, 238, 0.28), transparent 38%),
-                  radial-gradient(circle at 78% 78%, rgba(56, 189, 248, 0.24), transparent 40%),
-                  #020617;
-      color: #f1f7ff;
-      min-height: 100vh;
+      background-color: #021a13;
+      color: #e2e8f0;
       overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      line-height: 1.6;
     }
 
-    .animated-gradient {
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 3.5rem; font-weight: 800; }
+    h2 { font-size: 2.5rem; font-weight: 700; }
+    h3 { font-size: 1.875rem; font-weight: 600; }
+    h4 { font-size: 1.5rem; font-weight: 600; }
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #021a13; }
+    ::-webkit-scrollbar-thumb { background: #00ffcc; border-radius: 4px; }
+
+    /* Custom Cursor */
+    .cursor-glow {
       position: fixed;
-      inset: -40% -20%;
-      background: conic-gradient(
-        from 180deg at 50% 50%,
-        rgba(34, 211, 238, 0.2),
-        rgba(10, 29, 55, 0.3),
-        rgba(125, 211, 252, 0.16),
-        rgba(2, 6, 23, 0.2)
-      );
-      filter: blur(68px);
-      z-index: -2;
-      animation: rotateBg 20s linear infinite;
+      top: 0; left: 0;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,255,204,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
       pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease-out;
     }
 
-    .noise-layer {
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.6px, transparent 0.6px);
-      background-size: 3px 3px;
-      opacity: 0.11;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .glass {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(125, 211, 252, 0.06));
-      border: 1px solid rgba(125, 211, 252, 0.3);
+    /* Glassmorphism */
+    .glass-panel {
+      background: rgba(2, 26, 19, 0.5);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(0, 255, 204, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
-    .section-reveal {
+    .glass-panel:hover {
+      border-color: rgba(0, 255, 204, 0.25);
+      box-shadow: 0 12px 48px rgba(0, 255, 204, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* Animations */
+    .reveal {
       opacity: 0;
-      transform: translateY(34px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
     }
-
-    .section-reveal.show {
+    .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
 
-    section[id] {
-      scroll-margin-top: 90px;
+    .tilt-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
     }
 
-    .section-heading {
-      letter-spacing: -0.02em;
-      line-height: 1.12;
+    .text-gradient {
+      background: linear-gradient(to right, #d4ff00, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Grid Background */
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(0, 255, 204, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 204, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     }
 
     .nav-link {
       position: relative;
-      padding-bottom: 2px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      letter-spacing: 0.3px;
     }
-
     .nav-link::after {
       content: '';
       position: absolute;
       left: 0;
-      bottom: -2px;
+      bottom: -4px;
       width: 100%;
-      height: 1px;
-      background: rgba(34, 211, 238, 0.95);
+      height: 2px;
+      background: linear-gradient(to right, #d4ff00, #00ffcc);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.25s ease;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-radius: 1px;
     }
-
-    .nav-link:hover::after,
-    .nav-link:focus-visible::after {
+    .nav-link:hover::after {
       transform: scaleX(1);
     }
-
-    .focus-ring:focus-visible {
-      outline: 2px solid rgba(34, 211, 238, 0.95);
-      outline-offset: 2px;
-    }
-
-    .interactive-card {
-      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-    }
-
-    .interactive-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(34, 211, 238, 0.55);
-      box-shadow: 0 14px 35px rgba(2, 6, 23, 0.42);
-    }
-
-    .glow-btn {
-      position: relative;
-      overflow: hidden;
-      background: #dc2626 !important;
-      color: #ffffff !important;
-      border: 1px solid rgba(248, 113, 113, 0.8) !important;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .glow-btn::before {
-      content: '';
-      position: absolute;
-      inset: -120% auto auto -50%;
-      width: 55%;
-      height: 320%;
-      transform: rotate(25deg);
-      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.55), transparent);
-      transition: transform 0.6s ease;
-    }
-
-    .glow-btn:hover::before {
-      transform: translateX(290%) rotate(25deg);
-    }
-
-    .glow-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 24px rgba(248, 113, 113, 0.58), 0 0 60px rgba(248, 113, 113, 0.3);
-    }
-
-    .floating {
-      animation: floatCard 5.5s ease-in-out infinite;
+    .nav-link:hover {
+      color: #d4ff00;
+      text-shadow: 0 0 10px rgba(212, 255, 0, 0.3);
     }
 
     .hero-slide {
@@ -187,116 +182,11 @@
       opacity: 0;
       transition: opacity 0.7s ease;
     }
-
     .hero-slide.active {
-      opacity: 1;
+      opacity: 0.4;
     }
+  
 
-    .timeline-linear {
-      position: relative;
-      margin-top: 1.75rem;
-      padding: 0.25rem 0;
-    }
-
-    .timeline-linear::before {
-      content: '';
-      position: absolute;
-      left: 1rem;
-      top: 0;
-      bottom: 0;
-      width: 0.45rem;
-      border-radius: 999px;
-      background: linear-gradient(to bottom, #3b82f6 0%, #f59e0b 50%, #22d3ee 100%);
-      opacity: 0.95;
-    }
-
-    .timeline-grid {
-      position: relative;
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 3.5rem;
-    }
-
-    .timeline-card {
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 1rem;
-      background: rgba(2, 6, 23, 0.45);
-      padding: 1rem;
-    }
-
-    .timeline-date {
-      font-size: 1.7rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .timeline-week {
-      margin-top: 0.55rem;
-      font-size: 1.2rem;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .timeline-copy {
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(241, 245, 249, 0.95);
-    }
-
-    .timeline-marker {
-      position: absolute;
-      left: 0;
-      top: 1rem;
-      width: 2rem;
-      height: 2rem;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      background: #020617;
-      border: 2px solid currentColor;
-      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
-    }
-
-    .marker-w1 { color: #3b82f6; }
-    .marker-w2 { color: #f59e0b; }
-    .marker-w3 { color: #22d3ee; }
-
-    @media (min-width: 768px) {
-      .timeline-linear {
-        margin-top: 2.5rem;
-      }
-
-      .timeline-linear::before {
-        left: 0;
-        right: 0;
-        top: 50%;
-        bottom: auto;
-        width: 100%;
-        height: 1rem;
-        transform: translateY(-50%);
-        background: linear-gradient(to right, #3b82f6 0%, #3b82f6 33%, #f59e0b 33%, #f59e0b 66%, #22d3ee 66%, #22d3ee 100%);
-      }
-
-      .timeline-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-      }
-
-      .timeline-item {
-        min-height: 26rem;
-        padding-left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
 
       .timeline-card {
         max-width: 21rem;
@@ -314,7 +204,7 @@
         height: 3.25rem;
         font-size: 1rem;
       }
-    }
+    
 
     .loader-wrap {
       width: min(92vw, 660px);
@@ -377,473 +267,1384 @@
       to { transform: rotate(360deg) scale(1.1); }
     }
 
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-11px); }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
     }
 
-    @keyframes orbPulse {
-      0%, 100% {
-        transform: scale(0.86);
-        opacity: 0.45;
-        filter: blur(0px);
+    /* Enhanced Glow Animations */
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(212, 255, 0, 0.4), 0 0 40px rgba(212, 255, 0, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(212, 255, 0, 0.6), 0 0 60px rgba(212, 255, 0, 0.3); }
+    }
+
+    @keyframes glow-pulse-secondary {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.4), 0 0 40px rgba(0, 255, 204, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(0, 255, 204, 0.6), 0 0 60px rgba(0, 255, 204, 0.3); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    @keyframes border-glow {
+      0%, 100% { border-color: rgba(212, 255, 0, 0.3); box-shadow: 0 0 15px rgba(212, 255, 0, 0.2); }
+      50% { border-color: rgba(212, 255, 0, 0.8); box-shadow: 0 0 25px rgba(212, 255, 0, 0.4); }
+    }
+
+    /* Enhanced Card Styles */
+    .tilt-card {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1px solid rgba(212, 255, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tilt-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(212, 255, 0, 0.1) 50%, transparent 70%);
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+
+    .tilt-card:hover {
+      border-color: rgba(212, 255, 0, 0.6);
+      box-shadow: 0 20px 50px rgba(212, 255, 0, 0.2), 0 0 40px rgba(212, 255, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transform: translateY(-12px) scale(1.02);
+    }
+
+    /* Button Glow Effects */
+    .glow-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .glow-btn:hover::after {
+      left: 100%;
+    }
+
+    .glow-btn:hover {
+      box-shadow: 0 12px 40px rgba(212, 255, 0, 0.4), 0 0 30px rgba(0, 255, 204, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .glow-btn {
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.4px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Section Gradients */
+    .section-gradient {
+      background: linear-gradient(135deg, rgba(212, 255, 0, 0.05) 0%, rgba(0, 255, 204, 0.05) 100%);
+    }
+
+    /* Text Glow */
+    .text-glow {
+      text-shadow: 0 0 10px rgba(212, 255, 0, 0.3), 0 0 20px rgba(0, 255, 204, 0.2);
+    }
+
+    /* Enhanced Reveal with Stagger */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+      animation: reveal-glow 0.6s ease-out;
+    }
+
+    @keyframes reveal-glow {
+      0% { text-shadow: 0 0 20px rgba(212, 255, 0, 0), 0 0 40px rgba(0, 255, 204, 0); }
+      50% { text-shadow: 0 0 20px rgba(212, 255, 0, 0.4), 0 0 40px rgba(0, 255, 204, 0.2); }
+      100% { text-shadow: 0 0 10px rgba(212, 255, 0, 0.2), 0 0 20px rgba(0, 255, 204, 0.1); }
+    }
+
+    /* Accent Link Hover */
+    a {
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: #d4ff00;
+      text-shadow: 0 0 10px rgba(212, 255, 0, 0.5);
+    }
+
+    /* Interactive Elements */
+    .interactive-card {
+      border: 1.5px solid rgba(212, 255, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .interactive-card:hover {
+      border-color: rgba(212, 255, 0, 0.5);
+      background: rgba(212, 255, 0, 0.05);
+      box-shadow: 0 0 20px rgba(212, 255, 0, 0.3), inset 0 0 20px rgba(212, 255, 0, 0.05);
+    }
+
+    /* Gallery Enhancements */
+    .gallery-badge {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, rgba(212, 255, 0, 0.15) 0%, rgba(0, 255, 204, 0.05) 100%);
+      border: 1.5px solid rgba(212, 255, 0, 0.5);
+      border-radius: 25px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d4ff00;
+      margin-bottom: 1rem;
+      animation: badge-glow 2s ease-in-out infinite;
+      box-shadow: 0 4px 15px rgba(212, 255, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @keyframes badge-glow {
+      0%, 100% { box-shadow: 0 4px 15px rgba(212, 255, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+      50% { box-shadow: 0 4px 25px rgba(212, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15); }
+    }
+
+    .carousel-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .carousel-image-wrapper img {
+      transition: transform 0.4s ease;
+    }
+
+    .carousel-image-wrapper:hover img {
+      transform: scale(1.05);
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(2, 26, 19, 0) 0%, rgba(2, 26, 19, 0.4) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+    }
+
+    .carousel-image-wrapper:hover .carousel-overlay {
+      opacity: 1;
+    }
+
+    .carousel-counter {
+      position: absolute;
+      bottom-right: 0;
+      right: 1rem;
+      bottom: 4rem;
+      background: rgba(212, 255, 0, 0.9);
+      color: #021a13;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      z-index: 20;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .carousel-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(to right, #d4ff00, #00ffcc);
+      transition: width 0.5s ease;
+      z-index: 15;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(2, 26, 19, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      animation: zoomIn 0.3s ease;
+    }
+
+    .lightbox-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 1rem;
+      box-shadow: 0 0 50px rgba(212, 255, 0, 0.3), 0 0 80px rgba(0, 255, 204, 0.2);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -2.5rem;
+      right: 0;
+      background: linear-gradient(135deg, #d4ff00, #00ffcc);
+      color: #021a13;
+      border: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(212, 255, 0, 0.3);
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.15) rotate(90deg);
+      box-shadow: 0 12px 40px rgba(212, 255, 0, 0.5);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(212, 255, 0, 0.2);
+      color: #d4ff00;
+      border: 1px solid rgba(212, 255, 0, 0.4);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(212, 255, 0, 0.4);
+      box-shadow: 0 0 20px rgba(212, 255, 0, 0.5);
+    }
+
+    .lightbox-prev {
+      left: -4.5rem;
+    }
+
+    .lightbox-next {
+      right: -4.5rem;
+    }
+
+    .lightbox-info {
+      position: absolute;
+      bottom: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #d4ff00;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Additional Professional Enhancements */
+    .interactive-card {
+      border: 1.5px solid rgba(212, 255, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .interactive-card:hover {
+      border-color: rgba(212, 255, 0, 0.5);
+      background: rgba(212, 255, 0, 0.05);
+      box-shadow: 0 12px 30px rgba(212, 255, 0, 0.2), 0 0 20px rgba(0, 255, 204, 0.1);
+      transform: translateY(-6px);
+    }
+
+    /* Button Professional Styling */
+    button:not(.carousel-dot):not(.carousel-prev):not(.carousel-next):not(.lightbox-nav) {
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.4px;
+      font-weight: 600;
+    }
+
+    /* Section spacing and dividers */
+    section {
+      position: relative;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0, 255, 204, 0.2), transparent);
+    }
+
+    /* Text Selection Styling */
+    ::selection {
+      background: rgba(212, 255, 0, 0.3);
+      color: #d4ff00;
+    }
+
+    /* Enhanced Typography for better readability */
+    strong {
+      font-weight: 700;
+      color: #d4ff00;
+    }
+
+    em {
+      font-style: italic;
+      color: #00ffcc;
+    }
+
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 768px) {
+      /* Reduce padding on mobile */
+      .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
-      50% {
-        transform: scale(1.12);
-        opacity: 1;
-        filter: blur(0.2px);
+
+      /* Optimize section padding */
+      section {
+        padding: 2rem 0 !important;
+      }
+
+      /* Better spacing for gallery titles on mobile */
+      h2 {
+        font-size: 1.875rem !important;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem !important;
+      }
+
+      /* Optimize carousel button sizes for mobile */
+      .carousel-prev,
+      .carousel-next {
+        width: 36px !important;
+        height: 36px !important;
+      }
+
+      /* Better touch targets on mobile */
+      button:not(.carousel-dot) {
+        padding: 0.75rem 1.5rem !important;
+        min-height: 44px;
+      }
+
+      /* Optimize card image heights on mobile */
+      .tilt-card .h-48 {
+        height: 200px !important;
+      }
+
+      /* Hide section dividers on mobile for cleaner look */
+      section::before {
+        left: 5% !important;
+        right: 5% !important;
+      }
+
+      /* Better spacing for gallery feature tags */
+      .flex.gap-4 {
+        gap: 0.5rem !important;
+      }
+
+      /* Optimize badge sizing on mobile */
+      .gallery-badge {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.75rem !important;
       }
     }
+
+    /* Tablet specific optimizations */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      section {
+        padding: 3rem 0 !important;
+      }
+
+      h2 {
+        font-size: 2.25rem !important;
+      }
+    }
+
+    /* Large screen optimizations */
+    @media (min-width: 1024px) {
+      section {
+        padding: 4rem 0 !important;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <div class="animated-gradient"></div>
-  <div class="noise-layer"></div>
+  <!-- Custom Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-  <div id="loader" class="fixed inset-0 z-[100] grid place-items-center bg-[#020617]">
-    <div class="loader-wrap">
-      <!-- <h2 class="loader-title">3D Loading Animation</h2> -->
-      <!-- <p class="loader-subtitle">ENDURO 2026</p> -->
-      <div class="loader-orbs" aria-hidden="true">
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
-        <span class="loader-orb"></span>
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass-panel border-b-0 border-t-0">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="font-bold text-2xl tracking-tighter text-white font-poppins">ENDURO<span class="text-accent">.</span></div>
+      <div class="hidden items-center gap-8 text-sm font-inter text-slate-300 md:flex">
+        <a href="#video" class="nav-link hover:text-secondary transition">Video</a>
+        <a href="#tracks" class="nav-link hover:text-secondary transition">Tracks</a>
+        <a href="#timeline" class="nav-link hover:text-secondary transition">Timeline</a>
+        <a href="#gallery" class="nav-link hover:text-secondary transition">Gallery</a>
+        <a href="#speakers" class="nav-link hover:text-secondary transition">Speakers</a>
+        <a href="#pricing" class="nav-link hover:text-secondary transition">Pricing</a>
       </div>
-    </div>
-  </div>
-
-  <nav class="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-      <a href="#home" class="focus-ring text-lg font-semibold tracking-[0.25em] text-enduro-sky">ENDURO 2026</a>
-      <div class="hidden items-center gap-7 text-sm font-medium text-slate-100 md:flex">
-        <a href="#video" class="nav-link focus-ring transition hover:text-enduro-sky">Film</a>
-        <a href="#about" class="nav-link focus-ring transition hover:text-enduro-sky">About</a>
-        <a href="#tracks" class="nav-link focus-ring transition hover:text-enduro-sky">Tracks</a>
-        <a href="#timeline" class="nav-link focus-ring transition hover:text-enduro-sky">Timeline</a>
-        <a href="#features" class="nav-link focus-ring transition hover:text-enduro-sky">Features</a>
-        <a href="#highlights" class="nav-link focus-ring transition hover:text-enduro-sky">Highlights</a>
-        <a href="#gallery" class="nav-link focus-ring transition hover:text-enduro-sky">Gallery</a>
-        <a href="#pricing" class="nav-link focus-ring transition hover:text-enduro-sky">Pricing</a>
-      </div>
-      <a href="register.html" class="focus-ring glow-btn rounded-full border border-enduro-sky/60 bg-enduro-sky px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-950 sm:text-sm">Register</a>
-    </div>
-    <div class="mx-auto flex w-full max-w-7xl gap-3 overflow-x-auto px-5 pb-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200 md:hidden sm:px-8">
-      <a href="#video" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Film</a>
-      <a href="#about" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">About</a>
-      <a href="#tracks" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Tracks</a>
-      <a href="#timeline" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Timeline</a>
-      <a href="#pricing" class="focus-ring whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-3 py-1.5">Pricing</a>
+      <a href="register.html" class="bg-accent text-dark font-semibold px-6 py-2 rounded-full hover:shadow-glow-accent transition-all duration-300 font-poppins font-600">Apply Now</a>
     </div>
   </nav>
 
   <main>
-    <section id="home" class="section-reveal relative min-h-[92vh] w-full overflow-hidden">
-      <div id="hero-slider" class="absolute inset-0">
-        <img class="hero-slide active" data-hero-slide data-caption="IIT Kharagpur campus aerial perspective" src="https://commons.wikimedia.org/wiki/Special:FilePath/IIT%20Kharagpur%20(2259801380).jpg" alt="Aerial view of IIT Kharagpur campus" />
-        <img class="hero-slide" data-hero-slide data-caption="Wide campus shot of IIT Kharagpur" src="https://commons.wikimedia.org/wiki/Special:FilePath/IIT%20Kharagpur%20Campus%20-%20West%20Midnapore%202015-09-28%204522.JPG" alt="Wide campus view of IIT Kharagpur" />
-        <img class="hero-slide" data-hero-slide data-caption="Iconic IIT Kharagpur main building view" src="https://commons.wikimedia.org/wiki/Special:FilePath/IIT%20Kharagpur%20Main%20Building.JPG" alt="IIT Kharagpur main building view" />
+    <!-- 1. Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <div id="hero-slider" class="absolute inset-0 z-0">
+        <img class="hero-slide active mix-blend-luminosity" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200" alt="Innovation Lab" />
+        <img class="hero-slide mix-blend-luminosity" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200" alt="Tech Campus" />
+        <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent"></div>
       </div>
-      <div class="absolute inset-0 bg-gradient-to-r from-[#020617]/90 via-[#020617]/70 to-[#020617]/50"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-[#020617]/78 via-transparent to-[#020617]/55"></div>
-
-      <div class="relative z-10 mx-auto flex min-h-[92vh] w-full max-w-7xl items-center px-5 py-16 sm:px-8">
-        <div class="max-w-3xl">
-          <p class="mb-5 inline-flex rounded-full border border-enduro-sky/45 bg-enduro-sky/15 px-4 py-1 text-xs font-medium uppercase tracking-[0.2em] text-enduro-sky">IIT Ecosystem Learning Initiative</p>
-          <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-6xl lg:text-7xl">ENDURO 2026</h1>
-          <p class="mt-5 text-xl font-medium text-enduro-sky sm:text-2xl">Learn - Build - Innovate</p>
-          <p class="mt-3 text-sm font-medium text-slate-100 sm:text-base">Python - Machine Learning - Full Stack - AI Research</p>
-          <p class="mt-6 max-w-2xl text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">ENDURO 2026 is a structured, intensive initiative designed to bridge classroom theory with real-world technical excellence through hands-on training, research exposure, and applied projects.</p>
-          <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a href="register.html" class="focus-ring glow-btn rounded-full border border-enduro-sky/65 bg-enduro-sky px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-slate-950">Register Now</a>
-            <a href="#video" class="focus-ring rounded-full border border-enduro-sky/45 bg-enduro-sky/10 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-enduro-sky/70 hover:bg-enduro-sky/20 hover:text-white">Watch Program Film</a>
-            <a href="#about" class="focus-ring rounded-full border border-slate-200/45 bg-black/20 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-enduro-sky/55 hover:text-enduro-sky">Explore Program</a>
+      <div class="bg-grid-pattern"></div>
+      
+      <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div class="max-w-3xl space-y-6 reveal">
+          <div class="inline-block px-5 py-2 rounded-full border border-secondary/60 text-secondary bg-secondary/10 font-inter font-600 text-sm reveal text-glow tracking-wide">
+            ▪ IIT Ecosystem Learning Initiative
           </div>
-          <div class="mt-8 grid max-w-2xl grid-cols-3 gap-3 text-xs font-semibold uppercase tracking-[0.1em] text-slate-100 sm:text-sm">
-            <p class="rounded-xl border border-white/15 bg-black/30 px-3 py-2">3 Tracks</p>
-            <p class="rounded-xl border border-white/15 bg-black/30 px-3 py-2">Hands-On Projects</p>
-            <p class="rounded-xl border border-white/15 bg-black/30 px-3 py-2">IIT Ecosystem</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="absolute inset-x-0 bottom-8 z-10">
-        <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-5 sm:px-8">
-          <p id="hero-slide-caption" class="text-sm font-medium text-white/95">IIT Kharagpur campus aerial perspective</p>
-          <div class="flex items-center gap-2">
-            <button type="button" data-hero-dot="0" class="h-2.5 w-2.5 rounded-full bg-enduro-sky transition"></button>
-            <button type="button" data-hero-dot="1" class="h-2.5 w-2.5 rounded-full bg-white/35 transition"></button>
-            <button type="button" data-hero-dot="2" class="h-2.5 w-2.5 rounded-full bg-white/35 transition"></button>
+          <h1 class="text-6xl sm:text-8xl font-bold leading-tight text-glow font-poppins font-800 tracking-tight">
+            ENDURO <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-secondary to-accent">2026</span>
+          </h1>
+          <p class="text-2xl md:text-3xl font-semibold text-accent text-glow font-poppins font-600">Learn • Build • Innovate</p>
+          <p class="text-base text-gray-300 font-inter font-500 tracking-widest uppercase">
+            <span class="text-secondary">→</span> Python | Machine Learning | Full Stack | AI Research
+          </p>
+          <p class="text-gray-300 text-lg leading-relaxed max-w-2xl font-inter font-400">
+            A structured, intensive initiative designed to bridge classroom theory with <span class="font-semibold text-secondary">real-world technical excellence</span> through hands-on training, research exposure, and applied projects.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-8">
+            <a href="register.html" class="glow-btn bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-dark font-bold px-8 py-3 rounded-full transition-all font-poppins font-700 tracking-wide">REGISTER NOW</a>
+            <a href="#about" class="glow-btn glass-panel border-secondary/50 hover:border-secondary text-white px-8 py-3 rounded-full transition-all font-poppins font-700 tracking-wide">EXPLORE PROGRAM</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="video" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="glass overflow-hidden rounded-3xl border border-enduro-sky/30 p-4 sm:p-6">
-        <div class="grid items-center gap-6 lg:grid-cols-[0.95fr_1.25fr]">
-          <div class="px-2">
-            <p class="text-xs uppercase tracking-[0.2em] text-enduro-sky/90">Program Film</p>
-            <h2 class="section-heading mt-3 text-3xl font-semibold text-white sm:text-4xl">See ENDURO Before You Register</h2>
-            <p class="mt-4 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">A quick visual walkthrough of workshops, mentorship, and project outcomes. Watch this first, then continue to registration.</p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href="register.html" class="focus-ring glow-btn rounded-full border border-enduro-sky/65 bg-enduro-sky px-6 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-slate-950">Apply Now</a>
-              <a href="#tracks" class="focus-ring rounded-full border border-white/30 bg-white/5 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-slate-100 transition hover:border-enduro-sky/55 hover:text-enduro-sky">View Tracks</a>
-            </div>
-          </div>
-          <div class="overflow-hidden rounded-2xl border border-white/15 bg-black/35 p-2">
-            <div class="aspect-video w-full overflow-hidden rounded-xl">
-              <iframe
-                class="h-full w-full"
-                src="https://drive.google.com/file/d/11IErie1q1DlOi-vHQCpLOzNhsD5egkq2/preview"
-                allow="autoplay"
+    <!-- 2. Video Section -->
+    <!-- <section id="video" class="py-24 relative bg-black/20 border-y border-secondary/10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-4xl font-bold mb-4">Program <span class="text-accent">Walkthrough</span></h2>
+          <p class="text-gray-400 font-mono max-w-2xl mx-auto">Watch a quick visual overview of workshops, mentorship, and project outcomes</p>
+        </div>
+        <div class="reveal">
+          <div class="glass-panel rounded-3xl p-2 overflow-hidden border border-secondary/20 hover:border-secondary/50 transition-all">
+            <div class="aspect-video rounded-2xl overflow-hidden bg-black/50">
+              <iframe 
+                class="w-full h-full" 
+                src="https://drive.google.com/file/d/11IErie1q1DlOi-vHQCpLOzNhsD5egkq2/preview" 
+                allow="autoplay" 
                 allowfullscreen
                 loading="lazy"
-                title="ENDURO 2026 Intro Video">
+                title="ENDURO 2026 Program Overview">
               </iframe>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <section id="about" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="mb-8">
-        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Program Overview</h2>
-        <p class="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">The program is built around a Skill + Research + Application model to prepare participants for both industry and research pathways across the AI and technology ecosystem.</p>
-      </div>
-      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 0.1s;">
-          <p class="text-3xl">HT</p>
-          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Hands-On Training</h3>
-          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Build skills through guided, project-based exercises from fundamentals to application.</p>
-        </article>
-        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 0.4s;">
-          <p class="text-3xl">RE</p>
-          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Research Exposure</h3>
-          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Engage with cutting-edge academic and applied research in modern technical domains.</p>
-        </article>
-        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 0.7s;">
-          <p class="text-3xl">RP</p>
-          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Real-World Projects</h3>
-          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Develop portfolio-ready solutions aimed at genuine technical and social problems.</p>
-        </article>
-        <article class="glass floating interactive-card rounded-2xl p-6" style="animation-delay: 1s;">
-          <p class="text-3xl">IL</p>
-          <h3 class="mt-4 text-lg font-semibold text-enduro-sky">Interdisciplinary Learning</h3>
-          <p class="mt-2 text-[0.95rem] leading-7 text-slate-100/95">Connect technology, science, and human insight for broader real-world impact.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="tracks" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="mb-8">
-        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Three Specialized Learning Tracks</h2>
-        <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">Participants select one track aligned with their goals, whether entering industry or pursuing research.</p>
-      </div>
-      <div class="grid gap-5 md:grid-cols-3">
-        <article class="group glass interactive-card rounded-2xl p-6 transition duration-300 hover:-translate-y-2 hover:border-enduro-sky/55 hover:bg-enduro-dark/35">
-          <h3 class="text-xl font-semibold text-enduro-sky">Algorithms for Text & Data Analytics</h3>
-          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Week 1 focuses on algorithm design using Python. Week 2 introduces NLP and machine learning foundations.</p>
-          <p class="mt-3 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Outcome: AI/ML base + text analytics + problem solving</p>
-        </article>
-        <article class="group glass interactive-card rounded-2xl p-6 transition duration-300 hover:-translate-y-2 hover:border-enduro-sky/55 hover:bg-enduro-dark/35">
-          <h3 class="text-xl font-semibold text-enduro-sky">Solution Tech Workshop (STW)</h3>
-          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Build production-ready web applications using Python (Django/Flask) with ReactJS/NodeJS for real-world problem statements.</p>
-          <p class="mt-3 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Certified by Transenigma Pvt Ltd and Prof. Pawan Goyal (CSE, IIT KGP)</p>
-          <p class="mt-2 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Track Fee: Rs 2,000 + 18% GST</p>
-        </article>
-        <article class="group glass interactive-card rounded-2xl p-6 transition duration-300 hover:-translate-y-2 hover:border-enduro-sky/55 hover:bg-enduro-dark/35">
-          <h3 class="text-xl font-semibold text-enduro-sky">Science & Translational Research</h3>
-          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">For research-oriented students exploring AI and human understanding through deep learning, social computing, and computational psychology.</p>
-          <p class="mt-3 text-xs uppercase tracking-[0.14em] text-enduro-sky/85">Research themes: mind, behavior, consciousness, and applied AI</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="timeline" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="mb-8">
-        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Program Timeline</h2>
-        <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">A structured 3-week journey from June 1 to June 23, 2026.</p>
-      </div>
-      <div class="timeline-linear">
-        <div class="timeline-grid">
-          <article class="timeline-item top">
-            <div class="timeline-card glass">
-              <p class="timeline-date text-[#3b82f6]">June 1 - June 8</p>
-              <h3 class="timeline-week text-[#3b82f6]">Week-1</h3>
-              <p class="timeline-copy">Program kickoff and launch of the structured 3-week learning journey.</p>
+    </section> -->
+    <section id="camp-video" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+                <h2 class="text-primary-500 font-semibold tracking-wide uppercase text-sm mb-2">ENDURO 2026</h2>
+                <h3 class="font-display text-4xl md:text-5xl font-bold mb-4">Watch the <span class="text-white">Video</span></h3>
             </div>
-            <span class="timeline-marker marker-w1">01</span>
-          </article>
 
-          <article class="timeline-item bottom">
-            <div class="timeline-card glass">
-              <p class="timeline-date text-[#f59e0b]">June 9 - June 15</p>
-              <h3 class="timeline-week text-[#f59e0b]">Week-2</h3>
-              <p class="timeline-copy">National Youth Symposium</p>
+            <div class="glass-card rounded-3xl p-4 md:p-6 reveal">
+                <div class="aspect-video">
+                    <iframe
+                        class="w-full h-full rounded-2xl border border-white/10 bg-dark-800"
+                        src="https://drive.google.com/file/d/11IErie1q1DlOi-vHQCpLOzNhsD5egkq2/preview"
+                        title="Sphurti Camp Preview"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                
             </div>
-            <span class="timeline-marker marker-w2">02</span>
-          </article>
-
-          <article class="timeline-item top">
-            <div class="timeline-card glass">
-              <p class="timeline-date text-[#22d3ee]">June 16 - June 23</p>
-              <h3 class="timeline-week text-[#22d3ee]">Week-3</h3>
-              <p class="timeline-copy">Program conclusion with final presentations and certification.</p>
-            </div>
-            <span class="timeline-marker marker-w3">03</span>
-          </article>
         </div>
-      </div>
     </section>
 
-    <section id="features" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="mb-8">
-        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Why Participate in ENDURO 2026?</h2>
-      </div>
-      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
-          <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=900&q=80" alt="Hands-on coding training" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
-          <h3 class="text-xl font-semibold text-enduro-sky">Hands-on Training</h3>
-          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Build real systems and projects instead of staying only at theoretical understanding.</p>
-        </article>
-        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Mentorship session with experts" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
-          <h3 class="text-xl font-semibold text-enduro-sky">Expert Mentorship</h3>
-          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Learn directly from IIT faculty and experienced industry leaders.</p>
-        </article>
-        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80" alt="Real-world project collaboration" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
-          <h3 class="text-xl font-semibold text-enduro-sky">Portfolio Projects</h3>
-          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Leave with tangible work products useful for employers, internships, and higher studies.</p>
-        </article>
-        <article class="glass interactive-card rounded-2xl p-6 transition hover:-translate-y-2 hover:border-enduro-sky/55">
-          <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80" alt="Future AI and tech career growth" class="mb-4 h-40 w-full rounded-xl border border-white/10 object-cover" />
-          <h3 class="text-xl font-semibold text-enduro-sky">Career in AI & Tech</h3>
-          <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95">Gain the practical and research-oriented skills that matter for future technology careers.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="highlights" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="mb-8">
-        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Program Highlights</h2>
-        <p class="mt-3 max-w-3xl text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">Selection-based admission with limited seats, ecosystem exposure near IIT Kharagpur, and recognized certification pathways.</p>
-      </div>
-      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <article class="glass interactive-card overflow-hidden rounded-2xl">
-          <h3 class="px-5 pt-5 text-lg font-semibold text-enduro-sky">National Youth Symposium</h3>
-          <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1000&q=80" alt="Youth symposium session" class="mt-4 h-44 w-full object-cover" />
-          <p class="px-5 pb-5 pt-4 text-[0.95rem] leading-7 text-slate-100/95">Two guided symposium sessions are planned on June 8 and June 15, 2026 near IIT Kharagpur.</p>
-        </article>
-        <article class="glass interactive-card overflow-hidden rounded-2xl">
-          <h3 class="px-5 pt-5 text-lg font-semibold text-enduro-sky">Selection-Based Admission</h3>
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80" alt="Selection and screening process" class="mt-4 h-44 w-full object-cover" />
-          <p class="px-5 pb-5 pt-4 text-[0.95rem] leading-7 text-slate-100/95">Registrations open with limited seats. Selection ensures focused learning and mentoring quality.</p>
-        </article>
-        <article class="glass interactive-card overflow-hidden rounded-2xl">
-          <h3 class="px-5 pt-5 text-lg font-semibold text-enduro-sky">Certification Pathways</h3>
-          <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1000&q=80" alt="Certification and achievement" class="mt-4 h-44 w-full object-cover" />
-          <p class="px-5 pb-5 pt-4 text-[0.95rem] leading-7 text-slate-100/95">Track-led certifications including STW recognition from Transenigma and Prof. Pawan Goyal (IIT KGP).</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="gallery" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="mb-8">
-        <h2 class="section-heading text-3xl font-semibold text-white sm:text-4xl">Gallery</h2>
-        <p class="mt-3 text-[0.95rem] leading-7 text-slate-100/95 sm:text-base">Click any image to view it in full size.</p>
-      </div>
-      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="AI Workshop Arena">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80" alt="AI workshop arena" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
-          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">AI Workshop Arena</span>
-        </button>
-        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Full Stack Coding Sprint">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" alt="Full stack coding sprint" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
-          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Full Stack Coding Sprint</span>
-        </button>
-        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Research and Experiments Lab">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1000&q=80" alt="Research and experiments lab" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
-          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Research and Experiments Lab</span>
-        </button>
-        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Innovation Showcase">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80" alt="Innovation showcase stage" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
-          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Innovation Showcase</span>
-        </button>
-        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Mentorship Session">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=80" alt="Mentorship session" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
-          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Mentorship Session</span>
-        </button>
-        <button type="button" class="group relative overflow-hidden rounded-2xl border border-white/15" data-lightbox-src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80" data-lightbox-title="Team Collaboration">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Team collaboration" class="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
-          <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 text-left text-sm font-medium text-white">Team Collaboration</span>
-        </button>
-      </div>
-    </section>
-
-    <section id="pricing" class="section-reveal mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-      <div class="glass relative overflow-hidden rounded-3xl p-8 sm:p-10">
-        <div class="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-enduro-sky/20 blur-2xl"></div>
-        <p class="text-xs uppercase tracking-[0.24em] text-enduro-sky/90">Cost, Support and Payment Plan</p>
-        <h2 class="mt-3 text-4xl font-bold text-white">Rs 17,000 Total Estimated Cost</h2>
-        <p class="mt-3 max-w-2xl text-[0.95rem] leading-7 text-slate-100/95">All-inclusive coverage for travel, accommodation, food, and program registration. Alumni Support Initiative covers Rs 9,000 to reduce participant burden.</p>
-        <div class="mt-6 grid gap-3 text-[0.95rem] leading-7 text-slate-100/95 sm:grid-cols-2">
-          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Travel: To and from IIT Kharagpur ecosystem</p>
-          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Accommodation: Safe and comfortable stay</p>
-          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Food: Meals covered for program duration</p>
-          <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3">Registration: Workshops, symposiums, certification</p>
+    <!-- 3. Tracks Section -->
+    <section id="tracks" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-5xl md:text-6xl font-bold mb-6 font-poppins">Specialized <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Tracks</span></h2>
+          <p class="text-gray-400 font-inter max-w-2xl mx-auto text-lg tracking-wide">Master the technologies that are shaping the future.</p>
         </div>
-        <div class="mt-6">
-          <p class="text-xs uppercase tracking-[0.16em] text-enduro-sky/90">Installment Milestones (2026)</p>
-          <div class="mt-3 grid gap-3 text-[0.95rem] leading-7 text-slate-100/95 sm:grid-cols-2 lg:grid-cols-4">
-            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">April 18</span><br />Installment 1 due</p>
-            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">May 1</span><br />Installment 2 due</p>
-            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">May 15</span><br />Installment 3 due</p>
-            <p class="rounded-xl border border-white/15 bg-black/20 px-4 py-3"><span class="font-semibold text-enduro-sky">May 30</span><br />Final settlement deadline</p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="tilt-card glass-panel interactive-card p-8 rounded-2xl border-secondary/30 hover:border-secondary reveal">
+            <div class="w-14 h-14 rounded-lg bg-secondary/20 flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold text-secondary mb-4">Algorithms & Text Analytics (Two Week Course)</h3>
+            <p class="text-gray-400 text-sm mb-4"> Primarily teaches algorithm design in Python(one week) and an introduction to text processing (natural language processing) and Machine Learning (2nd week).</p>
+            <p class="text-xs font-mono text-secondary/80">> Outcome: AI/ML base</p>
+          </div>
+          <div class="tilt-card glass-panel interactive-card p-8 rounded-2xl border-accent/30 hover:border-accent reveal">
+            <div class="w-14 h-14 rounded-lg bg-accent/20 flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold text-accent mb-4">Solution Tech Workshop (Four Week Course)</h3>
+            <p class="text-gray-400 text-sm mb-4">Full stack development solution to real world problem on Python Django Flask or ReactJS NodeJS
+Certification by Transenigma Pvt Ltd and Prof Pawan Goyal, CSE, IIT KGP </p>
+            <p class="text-xs font-mono text-accent/80">> Course includes 2 weeks <strong>Offline</strong> and Two weeks <strong>Online</strong> mode</p>
+            <p class="text-xs font-mono text-accent/80">> Certified by Transenigma & IIT KGP</p>
+          </div>
+          <div class="tilt-card glass-panel interactive-card p-8 rounded-2xl border-secondary/30 hover:border-secondary reveal">
+            <div class="w-14 h-14 rounded-lg bg-secondary/20 flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold text-secondary mb-4">Science & Translational Research (Four Week Course)</h3>
+            <p class="text-gray-400 text-sm mb-4">Internship projects on AI Deep Learning, social computing, computational psychology. Themes of Science of happiness, modelling mind consciousness and reincarnation</p>
+            <p class="text-xs font-mono text-secondary/80">> Course includes 2 weeks <strong>Offline</strong> and Two weeks <strong>Online</strong> mode</p>
+            <p class="text-xs font-mono text-secondary/80">> Themes: mind, behavior, AI</p>
           </div>
         </div>
-        <a href="register.html" class="glow-btn mt-7 inline-flex rounded-full border border-enduro-sky/65 bg-enduro-sky px-7 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-950">Apply for Selection</a>
+      </div>
+    </section>
+
+    <!-- 4. Timeline Section -->
+    <section id="timeline" class="py-24 relative bg-black/20 border-y border-secondary/10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20 reveal">
+          <h2 class="text-5xl md:text-6xl font-bold mb-6 font-poppins">Program <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Timeline</span></h2>
+          <p class="text-gray-400 font-inter max-w-2xl mx-auto text-lg tracking-wide">A structured 3-week journey from June 1 to June 23, 2026.</p>
+        </div>
+        <div class="relative">
+          <!-- Timeline Line -->
+          <div class="hidden lg:block absolute top-1/3 left-0 right-0 h-1 bg-gradient-to-r from-accent via-secondary to-accent"></div>
+          
+          <!-- Timeline Cards -->
+          <div class="grid lg:grid-cols-3 gap-8 relative">
+            <!-- Week 1 -->
+            <div class="reveal">
+              <div class="glass-panel rounded-2xl p-8 mb-8 border border-accent/30 hover:border-accent transition-all">
+                <h3 class="text-2xl font-bold text-accent mb-3">June 1 - June 8</h3>
+                <h4 class="text-lg font-bold text-accent mb-4">Offline Technical Week First</h4>
+                <p class="text-gray-400">Program kickoff and launch of the structured 1-week offline technical sessions.</p>
+              </div>
+              <div class="flex justify-center">
+                <div class="w-12 h-12 rounded-full border-4 border-accent bg-dark flex items-center justify-center font-bold text-accent text-lg">01</div>
+              </div>
+            </div>
+            
+            <!-- Week 2 -->
+            <div class="reveal">
+              <div class="flex justify-center mb-8">
+                <div class="w-12 h-12 rounded-full border-4 border-secondary bg-dark flex items-center justify-center font-bold text-secondary text-lg">02</div>
+              </div>
+              <div class="glass-panel rounded-2xl p-8 border border-secondary/30 hover:border-secondary transition-all">
+                <h3 class="text-2xl font-bold text-secondary mb-3">June 9 - June 15</h3>
+                <p class="text-gray-400">All India National Youth Symposium</p>
+              </div>
+            </div>
+            
+            <!-- Week 3 -->
+            <div class="reveal">
+              <div class="glass-panel rounded-2xl p-8 mb-8 border border-accent/30 hover:border-accent transition-all">
+                <h3 class="text-2xl font-bold text-accent mb-3">June 16 - June 23</h3>
+                <h4 class="text-lg font-bold text-accent mb-4">Offline Technical Week Second</h4>
+                <p class="text-gray-400">Program continuation and final presentations and evaluation.</p>
+              </div>
+              <div class="flex justify-center">
+                <div class="w-12 h-12 rounded-full border-4 border-accent bg-dark flex items-center justify-center font-bold text-accent text-lg">03</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.5 Why Participate Section -->
+    <section id="why-participate" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-5xl md:text-6xl font-bold mb-6 font-poppins">Why Participate in <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">ENDURO 2026</span><span class="text-accent">?</span></h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-accent">
+            <div class="h-48 bg-black/50 overflow-hidden rounded-t-2xl">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=500&q=80" alt="Hands-on Training" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-3">Hands-on Training</h3>
+              <p class="text-gray-400 text-sm">Build real systems and projects instead of staying only at theoretical understanding.</p>
+            </div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-secondary">
+            <div class="h-48 bg-black/50 overflow-hidden rounded-t-2xl">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80" alt="Expert Mentorship" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-3">Expert Mentorship</h3>
+              <p class="text-gray-400 text-sm">Learn directly from IIT faculty and experienced industry leaders.</p>
+            </div>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-accent">
+            <div class="h-48 bg-black/50 overflow-hidden rounded-t-2xl">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Portfolio Projects" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-3">Portfolio Projects</h3>
+              <p class="text-gray-400 text-sm">Leave with tangible work products useful for employers, internships, and higher studies.</p>
+            </div>
+          </div>
+          
+          <!-- Card 4 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-secondary">
+            <div class="h-48 bg-black/50 overflow-hidden rounded-t-2xl">
+              <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=500&q=80" alt="Career in AI & Tech" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-3">Career in AI & Tech</h3>
+              <p class="text-gray-400 text-sm">Gain the practical and research-oriented skills that matter for future technology careers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Gallery Section -->
+    <section id="gallery" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20 reveal">
+          <h2 class="text-5xl md:text-6xl font-bold mb-6 font-poppins">
+            Program <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-secondary to-accent">Gallery</span>
+          </h2>
+          <p class="text-gray-400 font-inter max-w-2xl mx-auto text-lg tracking-wide">Visual highlights from past sessions and events</p>
+        </div>
+
+        <!-- Gallery Item 1: IIT KGP Visit -->
+        <div class="mb-16 reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+            <!-- Left: Title & Description -->
+            <div>
+              <div class="gallery-badge">🏆 Institutional Excellence</div>
+              <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-poppins font-700 leading-tight">
+                🏛️ IIT KGP <span class="text-accent">Visit</span>
+              </h3>
+              <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed font-inter font-400">
+                Experience the vibrant campus life and innovation hub at Indian Institute of Technology, Kharagpur. <span class="text-secondary font-semibold">50+ participants</span> got to explore <span class="text-accent font-semibold">world-class research facilities</span> and connect with leading academics across <span class="text-secondary font-semibold">10+ departments</span>.
+              </p>
+              <div class="flex gap-4 flex-wrap">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30">
+                  <div class="w-2.5 h-2.5 bg-accent rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Interactive Sessions</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 border border-secondary/30">
+                  <div class="w-2.5 h-2.5 bg-secondary rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Campus Tour</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Photo Carousel -->
+            <div>
+              <div class="relative rounded-2xl overflow-hidden glass-panel border border-secondary/20 h-80 md:h-96">
+                <div class="carousel-wrapper relative h-full" data-carousel="kgp">
+                  <div class="carousel-image-wrapper h-full" onclick="openLightbox('kgp', 0)">
+                    <img src="images/KGP 3.jpeg" alt="IIT KGP 1" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-100" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('kgp', 1)">
+                    <img src="images/KGP 2.jpeg" alt="IIT KGP 2" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('kgp', 2)">
+                    <img src="images/KGP 5.jpeg" alt="IIT KGP 3" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                </div>
+                <div class="carousel-counter" data-carousel="kgp">1/3</div>
+                <div class="carousel-progress" data-carousel="kgp" style="width: 33.33%"></div>
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  <button class="carousel-dot w-2 h-2 bg-accent rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="kgp" data-index="0"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="kgp" data-index="1"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="kgp" data-index="2"></button>
+                </div>
+                <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="kgp">❮</button>
+                <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="kgp">❯</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2: Engaging Activities -->
+        <div class="mb-16 reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+            <!-- Left: Title & Description -->
+            <div>
+              <div class="gallery-badge">⚡ Skill Development</div>
+              <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-poppins font-700">
+                🎯 Engaging <span class="text-secondary">Activities</span>
+              </h3>
+              <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed font-inter font-400">
+                Participate in <span class="text-accent font-semibold">15+ dynamic workshops</span> and <span class="text-secondary font-semibold">team challenges</span> designed to enhance your technical and soft skills. Building confidence and collaboration through <span class="text-accent font-semibold">diverse activities</span> with <span class="text-secondary font-semibold">real-world applications</span>.
+              </p>
+              <div class="flex gap-4 flex-wrap">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30">
+                  <div class="w-2.5 h-2.5 bg-accent rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Workshops</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 border border-secondary/30">
+                  <div class="w-2.5 h-2.5 bg-secondary rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Team Challenges</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Photo Carousel -->
+            <div>
+              <div class="relative rounded-2xl overflow-hidden glass-panel border border-secondary/20 h-80 md:h-96">
+                <div class="carousel-wrapper relative h-full" data-carousel="activities">
+                  <div class="carousel-image-wrapper h-full" onclick="openLightbox('activities', 0)">
+                    <img src="images/gd.jpg" alt="Activities 1" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-100" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('activities', 1)">
+                    <img src="images/DRama.jpeg" alt="Activities 2" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('activities', 2)">
+                    <img src="images/debate.jpeg" alt="Activities 3" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                </div>
+                <div class="carousel-counter" data-carousel="activities">1/3</div>
+                <div class="carousel-progress" data-carousel="activities" style="width: 33.33%"></div>
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  <button class="carousel-dot w-2 h-2 bg-accent rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="activities" data-index="0"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="activities" data-index="1"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="activities" data-index="2"></button>
+                </div>
+                <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="activities">❮</button>
+                <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="activities">❯</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3: Scenic Places -->
+        <div class="mb-16 reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+            <!-- Left: Title & Description -->
+            <div>
+              <div class="gallery-badge">🌍 Nature & Wellness</div>
+              <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-poppins font-700">
+                🌄 Visit to Scenic <span class="text-accent">Places</span>
+              </h3>
+              <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed font-inter font-400">
+                Explore <span class="text-secondary font-semibold">5+ breathtaking destinations</span> surrounding the IIT ecosystem. From serene landscapes to <span class="text-accent font-semibold">spiritual heritage sites</span>, these trips offered moments of inspiration and rejuvenation away from the classroom with <span class="text-secondary font-semibold">100+ group members</span>.
+              </p>
+              <div class="flex gap-4 flex-wrap">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30">
+                  <div class="w-2.5 h-2.5 bg-accent rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Nature Exploration</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 border border-secondary/30">
+                  <div class="w-2.5 h-2.5 bg-secondary rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Group Adventures</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Photo Carousel -->
+            <div>
+              <div class="relative rounded-2xl overflow-hidden glass-panel border border-secondary/20 h-80 md:h-96">
+                <div class="carousel-wrapper relative h-full" data-carousel="scenic">
+                  <div class="carousel-image-wrapper h-full" onclick="openLightbox('scenic', 0)">
+                    <img src="images/Mayapur.jpeg" alt="Scenic 1" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-100" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('scenic', 1)">
+                    <img src="images/Howrah-visit.jpeg" alt="Scenic 2" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('scenic', 2)">
+                    <img src="images/tovp.webp" alt="Scenic 3" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                </div>
+                <div class="carousel-counter" data-carousel="scenic">1/3</div>
+                <div class="carousel-progress" data-carousel="scenic" style="width: 33.33%"></div>
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  <button class="carousel-dot w-2 h-2 bg-accent rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="scenic" data-index="0"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="scenic" data-index="1"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="scenic" data-index="2"></button>
+                </div>
+                <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="scenic">❮</button>
+                <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="scenic">❯</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4: Delicious Feasts -->
+        <div class="mb-16 reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+            <!-- Left: Title & Description -->
+            <div>
+              <div class="gallery-badge">🍲 Community Bonding</div>
+              <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-poppins font-700">
+                🍽️ Delicious <span class="text-secondary">Feasts</span>
+              </h3>
+              <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed font-inter font-400">
+                Savor <span class="text-accent font-semibold">authentic regional cuisines</span> and culinary delights that brought everyone together. Enjoyed <span class="text-secondary font-semibold">25+ traditional meals</span> and special celebrations, food became a medium of connection and joy across <span class="text-accent font-semibold">cultural boundaries</span>.
+              </p>
+              <div class="flex gap-4 flex-wrap">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30">
+                  <div class="w-2.5 h-2.5 bg-accent rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Authentic Cuisine</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 border border-secondary/30">
+                  <div class="w-2.5 h-2.5 bg-secondary rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Community Bonding</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Photo Carousel -->
+            <div>
+              <div class="relative rounded-2xl overflow-hidden glass-panel border border-secondary/20 h-80 md:h-96">
+                <div class="carousel-wrapper relative h-full" data-carousel="feasts">
+                  <div class="carousel-image-wrapper h-full" onclick="openLightbox('feasts', 0)">
+                    <img src="images/Prasadam.jpeg" alt="Feasts 1" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-100" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('feasts', 1)">
+                    <img src="images/Prasadam-1.jpeg" alt="Feasts 2" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('feasts', 2)">
+                    <img src="images/Prasadam 3.jpeg" alt="Feasts 3" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                </div>
+                <div class="carousel-counter" data-carousel="feasts">1/3</div>
+                <div class="carousel-progress" data-carousel="feasts" style="width: 33.33%"></div>
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  <button class="carousel-dot w-2 h-2 bg-accent rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="feasts" data-index="0"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="feasts" data-index="1"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="feasts" data-index="2"></button>
+                </div>
+                <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="feasts">❮</button>
+                <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="feasts">❯</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5: New Friendships -->
+        <div class="mb-16 reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+            <!-- Left: Title & Description -->
+            <div>
+              <div class="gallery-badge">🌟 Network Building</div>
+              <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-poppins font-700">
+                🤝 New <span class="text-accent">Friendships</span>
+              </h3>
+              <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed font-inter font-400">
+                Build lasting relationships with <span class="text-secondary font-semibold">peers from 15+ states</span> and diverse backgrounds. These friendships transcended the program, creating <span class="text-accent font-semibold">networks of 50+ members</span> that will support careers and personal growth with <span class="text-secondary font-semibold">lifetime connections</span>.
+              </p>
+              <div class="flex gap-4 flex-wrap">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30">
+                  <div class="w-2.5 h-2.5 bg-accent rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Peer Bonding</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 border border-secondary/30">
+                  <div class="w-2.5 h-2.5 bg-secondary rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Lasting Networks</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Photo Carousel -->
+            <div>
+              <div class="relative rounded-2xl overflow-hidden glass-panel border border-secondary/20 h-80 md:h-96">
+                <div class="carousel-wrapper relative h-full" data-carousel="friendships">
+                  <div class="carousel-image-wrapper h-full" onclick="openLightbox('friendships', 0)">
+                    <img src="images/Friendship.jpeg" alt="Friends 1" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-100" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('friendships', 1)">
+                    <img src="images/Prasadam 5.jpeg" alt="Friends 2" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                  <div class="carousel-image-wrapper h-full absolute inset-0" onclick="openLightbox('friendships', 2)">
+                    <img src="images/gd.jpg" alt="Friends 3" class="carousel-slide w-full h-full object-cover transition-opacity duration-500 opacity-0" />
+                    <div class="carousel-overlay"></div>
+                  </div>
+                </div>
+                <div class="carousel-counter" data-carousel="friendships">1/3</div>
+                <div class="carousel-progress" data-carousel="friendships" style="width: 33.33%"></div>
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  <button class="carousel-dot w-2 h-2 bg-accent rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="friendships" data-index="0"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="friendships" data-index="1"></button>
+                  <button class="carousel-dot w-2 h-2 bg-gray-500 rounded-full cursor-pointer transition-all hover:scale-125" data-carousel="friendships" data-index="2"></button>
+                </div>
+                <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="friendships">❮</button>
+                <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-accent/20 hover:bg-accent/40 rounded-full flex items-center justify-center text-white transition z-10" data-carousel="friendships">❯</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 6: Wisdom Talks -->
+        <div class="reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+            <!-- Left: Title & Description -->
+            <div>
+              <div class="gallery-badge">💼 Career & Growth</div>
+              <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-poppins font-700">
+                💡 Wisdom <span class="text-secondary">Talks</span>
+              </h3>
+              <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed font-inter font-400">
+                Learn from <span class="text-accent font-semibold">12+ industry experts</span> and academic leaders through engaging talks and mentorship sessions. Gain insights into <span class="text-secondary font-semibold">emerging career paths</span>, cutting-edge technologies, and life lessons that inspire growth from <span class="text-accent font-semibold">successful mentors</span>.
+              </p>
+              <div class="flex gap-4 flex-wrap">
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30">
+                  <div class="w-2.5 h-2.5 bg-accent rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Expert Insights</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 border border-secondary/30">
+                  <div class="w-2.5 h-2.5 bg-secondary rounded-full"></div>
+                  <span class="text-sm text-gray-300 font-inter font-500">Mentorship</span>
+                </div>
+              </div>
+            </div>
+        
+      </div>
+    </section>
+
+    <!-- 7. Eminent Speakers Section -->
+    <section id="speakers" class="py-24 relative bg-black/20 border-y border-secondary/10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-5xl md:text-6xl font-bold mb-6 font-poppins">Eminent <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Speakers & Mentors</span></h2>
+          <p class="text-gray-400 font-inter max-w-2xl mx-auto text-lg tracking-wide">Support and Guidance from Industry Leaders & Academic Excellence</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Speaker 1 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-accent">
+            <div class="aspect-square bg-black/50 overflow-hidden">
+              <img src="images/Ashwin.jpg" alt="Ashwin Gami" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-accent mb-1">Ashwin Gami</h3>
+              <p class="text-secondary font-mono text-xs mb-3">IIT Bombay B. Tech (EE)</p>
+              <p class="text-gray-400 text-sm">Founder and MD of Strategic ERP. Industry expert in enterprise solutions and digital transformation.</p>
+            </div>
+          </div>
+
+          <!-- Speaker 2 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-secondary">
+            <div class="aspect-square bg-black/50 overflow-hidden">
+              <img src="images/PavanGoel.jpg" alt="Prof Pavan Goel" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary mb-1">Prof Pavan Goel</h3>
+              <p class="text-accent font-mono text-xs mb-3">B.Tech IIT Kanpur | PhD University of Illinois</p>
+              <p class="text-gray-400 text-sm">Assistant Professor at IIT KGP. Expert in distributed systems and network optimization.</p>
+            </div>
+          </div>
+
+          <!-- Speaker 3 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-accent">
+            <div class="aspect-square bg-black/50 overflow-hidden">
+              <img src="images/Vipul.png" alt="Prof Vipul Arora" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-accent mb-1">Prof Vipul Arora</h3>
+              <p class="text-secondary font-mono text-xs mb-3">B.Tech IIT Kanpur | Post Doc. University of Oxford</p>
+              <p class="text-gray-400 text-sm">Assistant Professor at IIT Kanpur (EE). Research focus on signal processing and AI.</p>
+            </div>
+          </div>
+
+          <!-- Speaker 4 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-secondary">
+            <div class="aspect-square bg-black/50 overflow-hidden">
+              <img src="images/Nranjan.jpg" alt="Niranjan Pendharkar" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary mb-1">Niranjan Pendharkar</h3>
+              <p class="text-accent font-mono text-xs mb-3">ISc M. Tech (CS) | 60+ Patents</p>
+              <p class="text-gray-400 text-sm">Principal Engineer at Google. Leader in machine learning and large-scale systems.</p>
+            </div>
+          </div>
+
+          <!-- Speaker 5 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-accent">
+            <div class="aspect-square bg-black/50 overflow-hidden">
+              <img src="images/Himanshu.jpg" alt="Prof Himanshu Ashnani" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-accent mb-1">Prof Himanshu Ashnani</h3>
+              <p class="text-secondary font-mono text-xs mb-3">PhD Stanford (EE) | IIT Bombay Faculty</p>
+              <p class="text-gray-400 text-sm">Founding Advisor at AVNI. Expert in AI for social impact and responsible AI.</p>
+            </div>
+          </div>
+
+          <!-- Speaker 6 -->
+          <div class="tilt-card glass-panel interactive-card overflow-hidden rounded-2xl reveal hover:border-secondary">
+            <div class="aspect-square bg-black/50 overflow-hidden">
+              <img src="images/Gajendranath.jpg" alt="Prof Gajendranath Ch" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-secondary mb-1">Prof Gajendranath Ch</h3>
+              <p class="text-accent font-mono text-xs mb-3">B.Tech Osmania University | IITH Faculty</p>
+              <p class="text-gray-400 text-sm">Assistant Professor at IITH. Specialization in cybersecurity and network protocols.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Pricing Section -->
+    <section id="pricing" class="py-24 relative bg-black/20 border-y border-secondary/10">
+      <div class="max-w-6xl mx-auto px-6 reveal">
+        <div class="glass-panel rounded-3xl p-1 relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-40 h-40 bg-accent rounded-full blur-[80px] opacity-50"></div>
+          <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary rounded-full blur-[80px] opacity-50"></div>
+          
+          <div class="bg-dark/90 rounded-[1.4rem] p-8 lg:p-12 relative z-10 border border-white/5">
+            <!-- Header -->
+            <div class="mb-8">
+              <p class="text-sm font-mono text-accent tracking-widest uppercase mb-3">Cost, Support and Payment Plan</p>
+              <h2 class="text-4xl lg:text-5xl font-bold mb-4"> <span class="text-lg text-bold text-gray-400 font-normal">Total Estimated Cost : </span><span class="text-lg text-red-500">Rs 17,000</span></h2>
+              <p class="text-gray-400 mb-2">All-inclusive coverage for travel, accommodation, food, and program registration.</p>
+              <p class="text-gray-400">Alumni Support Initiative covers <span class="text-2xl font-bold text-secondary">Rs 8,000</span> and Registration amount is only <span class="text-2xl font-bold text-accent">Rs 9,000</span> per participant.</p>
+            </div>
+            
+            <!-- Cost Breakdown -->
+            <div class="grid md:grid-cols-2 gap-6 mb-10">
+              <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-accent/30 transition-all">
+                <p class="font-bold text-white mb-2">Travel: To and from IIT Kharagpur ecosystem</p>
+              </div>
+              <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-secondary/30 transition-all">
+                <p class="font-bold text-white mb-2">Accommodation: Safe and comfortable stay</p>
+              </div>
+              <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-accent/30 transition-all">
+                <p class="font-bold text-white mb-2">Food: Meals covered for program duration</p>
+              </div>
+              <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-secondary/30 transition-all">
+                <p class="font-bold text-white mb-2">Registration: Workshops, symposiums, certification</p>
+              </div>
+            </div>
+            
+            <!-- Payment Milestones -->
+            <div>
+              <p class="text-sm font-mono text-accent tracking-widest uppercase mb-6">Installment Milestones (2026)</p>
+              <div class="grid md:grid-cols-4 gap-4 mb-8">
+                <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-accent/30 transition-all text-center">
+                  <p class="font-bold text-white text-lg">April 25</p>
+                  <p class="text-gray-400 text-sm mt-2">Installment 1 due : Rs 3000</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-secondary/30 transition-all text-center">
+                  <p class="font-bold text-white text-lg">May 10</p>
+                  <p class="text-gray-400 text-sm mt-2">Installment 2 due : Rs 3000</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-accent/30 transition-all text-center">
+                  <p class="font-bold text-white text-lg">May 20</p>
+                  <p class="text-gray-400 text-sm mt-2">Installment 3 due : Rs 3000</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border border-white/5 hover:border-secondary/30 transition-all text-center">
+                  <p class="font-bold text-white text-lg">May 30</p>
+                  <p class="text-gray-400 text-sm mt-2">Final settlement deadline</p>
+                </div>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="text-center">
+                <a href="register.html" class="inline-block glow-btn bg-red-600 hover:bg-red-700 text-white font-bold px-10 py-4 rounded-full transition-all text-lg">Apply for Selection</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <div id="lightbox-modal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Image preview">
-    <div class="relative w-full max-w-5xl">
-      <button id="lightbox-close" type="button" class="absolute -top-12 right-0 rounded-full border border-white/30 bg-black/60 px-4 py-2 text-sm font-semibold text-white transition hover:border-enduro-sky hover:text-enduro-sky">Close</button>
-      <img id="lightbox-image" src="" alt="" class="max-h-[78vh] w-full rounded-2xl border border-white/20 object-contain" />
-      <p id="lightbox-caption" class="mt-3 text-center text-[0.95rem] leading-7 text-slate-100/95"></p>
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()">×</button>
+      <img id="lightbox-image" class="lightbox-image" src="" alt="Gallery Image" />
+      <button class="lightbox-nav lightbox-prev" onclick="prevLightbox()">❮</button>
+      <button class="lightbox-nav lightbox-next" onclick="nextLightbox()">❯</button>
+      <div class="lightbox-info" id="lightbox-info">1/3</div>
     </div>
   </div>
 
-  <footer class="border-t border-white/10 bg-black/35">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-center text-sm text-slate-300 sm:flex-row sm:px-8 sm:text-left">
-      <p>© 2026 ENDURO. All rights reserved.</p>
-      <p>Advanced Technical and Research Workshops</p>
+  <!-- Footer -->
+  <footer class="border-t border-secondary/20 py-12 text-center text-gray-500 bg-black/40 text-sm font-mono">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>System.out.println("© 2026 ENDURO");</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-accent transition-colors">T&C</a>
+        <a href="#" class="hover:text-accent transition-colors">Privacy</a>
+        <a href="#" class="hover:text-secondary transition-colors">Support</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      setTimeout(() => loader.classList.add('hidden'), 450);
+    // Custom Cursor
+    const cursor = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
 
-    const revealElements = document.querySelectorAll('.section-reveal');
-    const observer = new IntersectionObserver((entries) => {
+    // Reveal animations
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
+        if(entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.18 });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    revealElements.forEach((el) => observer.observe(el));
-
-    const heroSlides = document.querySelectorAll('[data-hero-slide]');
-    const heroDots = document.querySelectorAll('[data-hero-dot]');
-    const heroSlideCaption = document.getElementById('hero-slide-caption');
-    const heroSlider = document.getElementById('hero-slider');
-    let heroSlideIndex = 0;
-    let heroSlideTimer = null;
-
-    const showHeroSlide = (index) => {
-      if (!heroSlides.length) return;
-      heroSlideIndex = (index + heroSlides.length) % heroSlides.length;
-      heroSlides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === heroSlideIndex);
-      });
-      heroDots.forEach((dot, i) => {
-        dot.classList.toggle('bg-enduro-sky', i === heroSlideIndex);
-        dot.classList.toggle('bg-white/35', i !== heroSlideIndex);
-      });
-      if (heroSlideCaption) {
-        heroSlideCaption.textContent = heroSlides[heroSlideIndex].getAttribute('data-caption') || '';
-      }
-    };
-
-    const startHeroSlider = () => {
-      if (heroSlides.length < 2) return;
-      if (heroSlideTimer) clearInterval(heroSlideTimer);
-      heroSlideTimer = setInterval(() => {
-        showHeroSlide(heroSlideIndex + 1);
-      }, 4200);
-    };
-
-    const stopHeroSlider = () => {
-      if (heroSlideTimer) {
-        clearInterval(heroSlideTimer);
-        heroSlideTimer = null;
-      }
-    };
-
-    heroDots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        showHeroSlide(index);
-        startHeroSlider();
-      });
-    });
-
-    if (heroSlider) {
-      heroSlider.addEventListener('mouseenter', stopHeroSlider);
-      heroSlider.addEventListener('mouseleave', startHeroSlider);
-      heroSlider.addEventListener('touchstart', stopHeroSlider, { passive: true });
-      heroSlider.addEventListener('touchend', startHeroSlider, { passive: true });
+    // Simple Hero Slider
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    if(slides.length > 0) {
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 4000);
     }
 
-    showHeroSlide(0);
-    startHeroSlider();
-
-    const lightboxModal = document.getElementById('lightbox-modal');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const lightboxButtons = document.querySelectorAll('[data-lightbox-src]');
-
-    const closeLightbox = () => {
-      lightboxModal.classList.add('hidden');
-      lightboxModal.classList.remove('flex');
-      document.body.classList.remove('overflow-hidden');
-      lightboxImage.src = '';
-      lightboxImage.alt = '';
-      lightboxCaption.textContent = '';
-    };
-
-    lightboxButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const src = button.getAttribute('data-lightbox-src') || '';
-        const title = button.getAttribute('data-lightbox-title') || '';
-        lightboxImage.src = src;
-        lightboxImage.alt = title;
-        lightboxCaption.textContent = title;
-        lightboxModal.classList.remove('hidden');
-        lightboxModal.classList.add('flex');
-        document.body.classList.add('overflow-hidden');
+    // 3D Tilt Effect
+    const cards = document.querySelectorAll('.tilt-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
       });
     });
 
-    lightboxClose.addEventListener('click', closeLightbox);
+    // Gallery Carousel Functionality
+    const carouselStates = {};
 
-    lightboxModal.addEventListener('click', (event) => {
-      if (event.target === lightboxModal) {
-        closeLightbox();
+    // Initialize carousel states
+    document.querySelectorAll('[data-carousel]').forEach(carousel => {
+      const carouselId = carousel.getAttribute('data-carousel');
+      if (!carouselStates[carouselId]) {
+        carouselStates[carouselId] = { current: 0, autoplay: null };
       }
     });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+    // Auto-advance carousel function
+    function autoAdvanceCarousel(carouselId) {
+      const slides = document.querySelectorAll(`[data-carousel="${carouselId}"] .carousel-slide`);
+      const dots = document.querySelectorAll(`.carousel-dot[data-carousel="${carouselId}"]`);
+      if (slides.length === 0) return;
+      
+      carouselStates[carouselId].current = (carouselStates[carouselId].current + 1) % slides.length;
+      updateCarousel(carouselId);
+    }
+
+    // Update carousel display
+    function updateCarousel(carouselId) {
+      const slides = document.querySelectorAll(`[data-carousel="${carouselId}"] .carousel-slide`);
+      const dots = document.querySelectorAll(`.carousel-dot[data-carousel="${carouselId}"]`);
+      const counter = document.querySelector(`.carousel-counter[data-carousel="${carouselId}"]`);
+      const progress = document.querySelector(`.carousel-progress[data-carousel="${carouselId}"]`);
+      const current = carouselStates[carouselId].current;
+      
+      slides.forEach((slide, index) => {
+        if (index === current) {
+          slide.style.opacity = '1';
+        } else {
+          slide.style.opacity = '0';
+        }
+      });
+      
+      dots.forEach((dot, index) => {
+        if (index === current) {
+          dot.style.backgroundColor = '#d4ff00';
+        } else {
+          dot.style.backgroundColor = '#6b7280';
+        }
+      });
+      
+      // Update counter
+      if (counter) {
+        counter.textContent = `${current + 1}/${slides.length}`;
+      }
+      
+      // Update progress bar
+      if (progress) {
+        const percentage = ((current + 1) / slides.length) * 100;
+        progress.style.width = `${percentage}%`;
+      }
+    }
+
+    // Navigation buttons
+    document.querySelectorAll('.carousel-prev').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const carouselId = btn.getAttribute('data-carousel');
+        const slides = document.querySelectorAll(`[data-carousel="${carouselId}"] .carousel-slide`);
+        carouselStates[carouselId].current = (carouselStates[carouselId].current - 1 + slides.length) % slides.length;
+        updateCarousel(carouselId);
+      });
+    });
+
+    document.querySelectorAll('.carousel-next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const carouselId = btn.getAttribute('data-carousel');
+        const slides = document.querySelectorAll(`[data-carousel="${carouselId}"] .carousel-slide`);
+        carouselStates[carouselId].current = (carouselStates[carouselId].current + 1) % slides.length;
+        updateCarousel(carouselId);
+      });
+    });
+
+    // Dot navigation
+    document.querySelectorAll('.carousel-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        const carouselId = dot.getAttribute('data-carousel');
+        const index = parseInt(dot.getAttribute('data-index'));
+        carouselStates[carouselId].current = index;
+        updateCarousel(carouselId);
+      });
+    });
+
+    // Start auto-play for each carousel
+    Object.keys(carouselStates).forEach(carouselId => {
+      carouselStates[carouselId].autoplay = setInterval(() => {
+        autoAdvanceCarousel(carouselId);
+      }, 5000);
+    });
+
+    // Lightbox functionality
+    let currentLightboxCarousel = '';
+    let currentLightboxIndex = 0;
+
+    function openLightbox(carouselId, imageIndex) {
+      currentLightboxCarousel = carouselId;
+      currentLightboxIndex = imageIndex;
+      
+      const slides = document.querySelectorAll(`[data-carousel="${carouselId}"] .carousel-slide`);
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxInfo = document.getElementById('lightbox-info');
+      
+      if (slides[imageIndex]) {
+        lightboxImage.src = slides[imageIndex].src;
+        lightboxImage.alt = slides[imageIndex].alt;
+        lightboxInfo.textContent = `${imageIndex + 1}/${slides.length}`;
+      }
+      
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function nextLightbox() {
+      const slides = document.querySelectorAll(`[data-carousel="${currentLightboxCarousel}"] .carousel-slide`);
+      currentLightboxIndex = (currentLightboxIndex + 1) % slides.length;
+      openLightbox(currentLightboxCarousel, currentLightboxIndex);
+    }
+
+    function prevLightbox() {
+      const slides = document.querySelectorAll(`[data-carousel="${currentLightboxCarousel}"] .carousel-slide`);
+      currentLightboxIndex = (currentLightboxIndex - 1 + slides.length) % slides.length;
+      openLightbox(currentLightboxCarousel, currentLightboxIndex);
+    }
+
+    // Close lightbox on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        nextLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        prevLightbox();
+      }
+    });
+
+    // Close lightbox when clicking outside the image
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') {
         closeLightbox();
       }
     });
   </script>
 </body>
 </html>
-
-
